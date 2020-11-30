@@ -12,11 +12,13 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-            .apply {
-                add(R.id.fragments_container, fragmentMoviesList)
-                commit()
-            }
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .apply {
+                    add(R.id.fragments_container, fragmentMoviesList)
+                    commit()
+                }
+        }
     }
 
     override fun onClickShowMovieDetails() {
