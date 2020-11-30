@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener {
 
-    private val fragmentMoviesList =
-        FragmentMoviesList().apply { setListener(this@MainActivity) }
+    private val fragmentMoviesList = FragmentMoviesList()
     private val fragmentMoviesDetails = FragmentMoviesDetails()
 
     override fun onCreate(savedInstanceState: Bundle?) {

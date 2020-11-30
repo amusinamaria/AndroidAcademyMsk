@@ -1,5 +1,6 @@
 package com.example.androidacademymsk
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,8 +28,16 @@ class FragmentMoviesList : Fragment() {
         }
     }
 
-    fun setListener(l: MovieClickListener) {
-        listener = l
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MovieClickListener) {
+            listener = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
     }
 
     interface MovieClickListener {
