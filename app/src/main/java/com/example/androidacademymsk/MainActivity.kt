@@ -3,8 +3,7 @@ package com.example.androidacademymsk
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener,
-    FragmentMoviesDetails.BackArrowClickListener {
+class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener {
 
     private val fragmentMoviesList = FragmentMoviesList()
     private val fragmentMoviesDetails = FragmentMoviesDetails()
@@ -29,9 +28,5 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener,
                 addToBackStack(null)
                 commit()
             }
-    }
-
-    override fun onClickBackArrow() {
-        onBackPressed()
     }
 }
