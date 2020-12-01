@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener {
 
-    private val fragmentMoviesList = FragmentMoviesList()
-    private val fragmentMoviesDetails = FragmentMoviesDetails()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,7 +12,7 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .apply {
-                    add(R.id.fragments_container, fragmentMoviesList)
+                    add(R.id.fragments_container, FragmentMoviesList())
                     commit()
                 }
         }
@@ -24,7 +21,7 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener 
     override fun onClickShowMovieDetails() {
         supportFragmentManager.beginTransaction()
             .apply {
-                add(R.id.fragments_container, fragmentMoviesDetails)
+                add(R.id.fragments_container, FragmentMoviesDetails())
                 addToBackStack(null)
                 commit()
             }
