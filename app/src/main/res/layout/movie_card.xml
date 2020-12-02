@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/dark_blue_background">
+    android:layout_width="170dp"
+    android:layout_height="296dp"
+    android:background="@color/white_gray">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movies_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/movie_picture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/movie_card" />
+        app:srcCompat="@drawable/mock_picture_movie" />
 
-    <Button
-        android:id="@+id/goToDetailButton"
+    <TextView
+        android:id="@+id/movie_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="GO TO DETAIL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Название фильма" />
 </androidx.constraintlayout.widget.ConstraintLayout>
