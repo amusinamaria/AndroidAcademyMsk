@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
 
 class FragmentMoviesList : Fragment() {
 
     private var goToDetailButton: Button? = null
     private var listener: MovieClickListener? = null
+    private var moviesRecycler: RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,12 +30,26 @@ class FragmentMoviesList : Fragment() {
                 listener?.onClickShowMovieDetails()
             }
         }
+        moviesRecycler = view.findViewById(R.id.movies_recycler)
+        moviesRecycler?.layoutManager = GridLayoutManager(context, 2)
+        moviesRecycler?.adapter = MoviesAdapter()
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is MovieClickListener) {
             listener = context
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        updateData()
+    }
+
+    private fun updateData() {
+        (moviesRecycler?.adapter as? MoviesAdapter)?.apply {
+            bindMovieCards(MockDataSource().getMovieCards())
         }
     }
 
