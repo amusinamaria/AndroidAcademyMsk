@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FragmentMoviesList : Fragment() {
 
-    private var goToDetailButton: Button? = null
     private var listener: MovieClickListener? = null
     private var moviesRecycler: RecyclerView? = null
 
@@ -25,7 +24,7 @@ class FragmentMoviesList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        goToDetailButton = view.findViewById<Button>(R.id.goToDetailButton).apply {
+        view.findViewById<Button>(R.id.goToDetailButton).apply {
             setOnClickListener {
                 listener?.onClickShowMovieDetails()
             }
