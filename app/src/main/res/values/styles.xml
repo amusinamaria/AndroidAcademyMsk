@@ -12,4 +12,11 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:lines">1</item>
     </style>
+
+    <style name="MovieCardReviewsAndDuration" parent="MovieCardText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/textsize_8</item>
+    </style>
 </resources>

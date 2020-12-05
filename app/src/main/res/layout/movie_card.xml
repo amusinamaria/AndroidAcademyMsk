@@ -48,18 +48,15 @@
 
         <TextView
             android:id="@+id/pg"
+            style="@style/MovieCardText"
             android:layout_width="@dimen/movie_card_pg_size"
             android:layout_height="@dimen/movie_card_pg_size"
-            android:layout_marginStart="@dimen/space_8"
             android:layout_marginTop="@dimen/space_8"
             android:background="@drawable/pg_background"
-            android:fontFamily="@font/roboto"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white_gray"
             android:textSize="@dimen/textsize_12"
             android:textStyle="bold"
-            android:typeface="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:text="13+" />
@@ -80,14 +77,10 @@
 
         <TextView
             android:id="@+id/movieDuration"
-            style="@style/MovieCardText"
+            style="@style/MovieCardReviewsAndDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_8"
-            android:textAllCaps="true"
-            android:textColor="@color/dark_gray"
-            android:textSize="@dimen/textsize_8"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,15 +116,11 @@
 
         <TextView
             android:id="@+id/movieReviews"
-            style="@style/MovieCardText"
+            style="@style/MovieCardReviewsAndDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_card_reviews_margin_start"
             android:gravity="center_vertical"
-            android:textAllCaps="true"
-            android:textColor="@color/dark_gray"
-            android:textSize="@dimen/textsize_8"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/movieRatingBar"
             app:layout_constraintStart_toEndOf="@+id/movieRatingBar"
             app:layout_constraintTop_toTopOf="@+id/movieRatingBar"
