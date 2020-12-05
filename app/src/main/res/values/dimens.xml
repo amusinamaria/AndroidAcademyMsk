@@ -21,5 +21,8 @@
     <dimen name="movie_card_ratingbar_margin_bottom">10dp</dimen>
     <dimen name="movie_card_reviews_margin_start">6dp</dimen>
 
+    <dimen name="movies_recycler_margin_top">32dp</dimen>
+    <dimen name="movies_list_header_margin_top">50dp</dimen>
+
     <integer name="movie_cards_column_count">2</integer>
 </resources>

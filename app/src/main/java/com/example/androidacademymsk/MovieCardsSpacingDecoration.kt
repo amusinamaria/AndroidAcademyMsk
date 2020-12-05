@@ -20,9 +20,8 @@ class MovieCardsSpacingDecoration(private val columnsCount: Int, private val spa
         outRect.left = spacing - column * spacing / columnsCount
         outRect.right = (column + 1) * spacing / columnsCount
 
-        if (position < columnsCount) {
-            outRect.top = spacing;
+        if (position >= columnsCount) {
+            outRect.bottom = spacing
         }
-        outRect.bottom = spacing
     }
 }
