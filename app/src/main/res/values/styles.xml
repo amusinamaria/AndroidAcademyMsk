@@ -4,4 +4,12 @@
     <style name="Like" parent="">
         <item name="android:button">@drawable/like_selector</item>
     </style>
+
+    <style name="MovieCardText">
+        <item name="android:layout_marginStart">@dimen/space_8</item>
+        <item name="android:layout_marginEnd">@dimen/space_8</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:lines">1</item>
+    </style>
 </resources>

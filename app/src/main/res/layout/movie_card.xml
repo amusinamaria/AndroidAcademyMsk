@@ -65,14 +65,10 @@
 
         <TextView
             android:id="@+id/movieTitle"
+            style="@style/MovieCardText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_8"
-            android:layout_marginEnd="@dimen/space_8"
             android:layout_marginBottom="20dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/roboto"
-            android:lines="1"
             android:textColor="@color/light_gray"
             android:textSize="14dp"
             android:textStyle="bold"
@@ -83,14 +79,10 @@
 
         <TextView
             android:id="@+id/movieDuration"
+            style="@style/MovieCardText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_8"
-            android:layout_marginEnd="@dimen/space_8"
             android:layout_marginBottom="@dimen/space_8"
-            android:ellipsize="end"
-            android:fontFamily="@font/roboto"
-            android:lines="1"
             android:textAllCaps="true"
             android:textColor="@color/dark_gray"
             android:textSize="8dp"
@@ -102,14 +94,10 @@
 
         <TextView
             android:id="@+id/movieTags"
+            style="@style/MovieCardText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_8"
-            android:layout_marginEnd="@dimen/space_8"
             android:layout_marginBottom="70dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/roboto"
-            android:lines="1"
             android:textColor="@color/pink"
             android:textSize="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
