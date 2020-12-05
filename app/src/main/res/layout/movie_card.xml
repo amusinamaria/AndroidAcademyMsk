@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardBackgroundColor="@color/dark_blue_background"
+    app:strokeWidth="1dp"
     app:cardCornerRadius="8dp"
     app:strokeColor="#2e2e3d"
-    app:strokeWidth="2dp"
+    tools:cardBackgroundColor="@color/dark_blue_background"
     tools:layout_height="296dp"
     tools:layout_width="170dp">
 
@@ -16,9 +16,12 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/movie_orig"
+            android:id="@+id/moviePicture"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="166:248"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,13 +29,19 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/picture_movie" />
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/movie_card_gradient" />
+
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/like"
             style="@style/Like"
             android:layout_width="16dp"
             android:layout_height="14dp"
             android:layout_marginTop="13dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,13 +52,45 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/pg_background"
+            android:fontFamily="@font/roboto"
             android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white_gray"
             android:textSize="12dp"
             android:textStyle="bold"
+            android:typeface="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="13+" />
+
+        <TextView
+            android:id="@+id/movieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="20dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@color/light_gray"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Black Widow" />
+
+        <TextView
+            android:id="@+id/movieDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:textAllCaps="true"
+            android:textColor="@color/dark_gray"
+            android:textSize="8dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="137 min" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
