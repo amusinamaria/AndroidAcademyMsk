@@ -2,14 +2,12 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="170dp"
+    android:layout_height="296dp"
     app:cardCornerRadius="8dp"
     app:strokeColor="#2e2e3d"
     app:strokeWidth="1dp"
-    tools:cardBackgroundColor="@color/dark_blue_background"
-    tools:layout_height="296dp"
-    tools:layout_width="170dp">
+    tools:cardBackgroundColor="@color/dark_blue_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,10 +27,14 @@
             app:srcCompat="@drawable/picture_movie" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/movieGradient"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/movie_card_gradient" />
+            android:layout_marginTop="70dp"
+            android:background="@drawable/movie_card_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/like"
@@ -60,7 +62,7 @@
             android:typeface="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="13+" />
+            android:text="13+" />
 
         <TextView
             android:id="@+id/movieTitle"
@@ -89,7 +91,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="137 min" />
+            android:text="137 min" />
 
         <TextView
             android:id="@+id/movieTags"
@@ -102,7 +104,7 @@
             app:layout_constraintBottom_toBottomOf="@id/moviePicture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Action, Adventure, Sci-Fi" />
+            android:text="Action, Adventure, Sci-Fi" />
 
         <me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:id="@+id/movieRatingBar"
@@ -117,7 +119,7 @@
             android:stepSize="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/moviePicture"
-            tools:rating="4" />
+            android:rating="4" />
 
         <TextView
             android:id="@+id/movieReviews"
@@ -133,7 +135,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/movieRatingBar"
             app:layout_constraintStart_toEndOf="@+id/movieRatingBar"
             app:layout_constraintTop_toTopOf="@+id/movieRatingBar"
-            tools:text="38 reviews" />
+            android:text="38 reviews" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
