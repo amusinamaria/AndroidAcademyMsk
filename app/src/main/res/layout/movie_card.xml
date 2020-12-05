@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:strokeWidth="1dp"
     app:cardCornerRadius="8dp"
     app:strokeColor="#2e2e3d"
+    app:strokeWidth="1dp"
     tools:cardBackgroundColor="@color/dark_blue_background"
     tools:layout_height="296dp"
     tools:layout_width="170dp">
@@ -68,13 +68,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="20dp"
             android:ellipsize="end"
+            android:fontFamily="@font/roboto"
             android:lines="1"
             android:textColor="@color/light_gray"
             android:textSize="14dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Black Widow" />
 
@@ -83,14 +86,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto"
+            android:lines="1"
             android:textAllCaps="true"
             android:textColor="@color/dark_gray"
             android:textSize="8dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="137 min" />
+
+        <TextView
+            android:id="@+id/movieTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="70dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto"
+            android:lines="1"
+            android:textColor="@color/pink"
+            android:textSize="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Action, Adventure, Sci-Fi" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
