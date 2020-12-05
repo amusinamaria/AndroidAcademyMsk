@@ -117,5 +117,18 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Action, Adventure, Sci-Fi" />
 
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/movieRatingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:progressBackgroundTint="@color/dark_gray"
+            android:progressTint="@color/pink"
+            android:stepSize="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movieTags"
+            tools:rating="4" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
