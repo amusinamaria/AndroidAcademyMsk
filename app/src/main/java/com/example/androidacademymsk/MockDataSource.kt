@@ -16,4 +16,16 @@ class MockDataSource {
             MovieCard("Ghost in the Shell"),
         )
     }
+
+    fun getCastCards(): List<CastCard> {
+        return listOf(
+            CastCard("Justin Dru Bieber"),
+            CastCard("Mark Ruffalo"),
+            CastCard("Robert Downey Jr."),
+            CastCard("Chris Evans"),
+            CastCard("Blake Jenner"),
+            CastCard("Benedict Cumberbatch"),
+            CastCard("Chris Hemsworth"),
+        )
+    }
 }
