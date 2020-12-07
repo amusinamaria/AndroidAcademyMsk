@@ -13,7 +13,6 @@ class MovieCardsSpacingDecoration(private val columnsCount: Int, private val spa
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-
         val position: Int = parent.getChildAdapterPosition(view)
         val column = position % columnsCount
 

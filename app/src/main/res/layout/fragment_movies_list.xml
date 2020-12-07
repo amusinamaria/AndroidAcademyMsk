@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/dark_blue_background">
 
-
     <LinearLayout
         android:id="@+id/headerContainer"
         android:layout_width="match_parent"
@@ -43,7 +42,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerContainer"
-        tools:listitem="@layout/movie_card" />
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/movie_card"
+        tools:spanCount="2" />
 
     <Button
         android:id="@+id/goToDetailButton"
