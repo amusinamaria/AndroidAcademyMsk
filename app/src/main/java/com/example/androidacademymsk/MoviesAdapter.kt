@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import me.zhanghai.android.materialratingbar.MaterialRatingBar
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
@@ -39,6 +40,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         fun setData(movieCard: MovieCard) {
             Glide.with(itemView.context)
                 .load(R.drawable.mock_picture_movie)
+                .transition(DrawableTransitionOptions.withCrossFade(80))
                 .into(picture)
 
             title?.text = movieCard.title

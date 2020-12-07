@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/movie_card_width"
     android:layout_height="@dimen/movie_card_height"
+    app:cardBackgroundColor="@color/dark_blue_background"
     app:cardCornerRadius="@dimen/movie_card_corner_radius"
     app:strokeColor="@color/movie_card_stroke"
-    app:strokeWidth="@dimen/movie_card_stroke_width"
-    tools:cardBackgroundColor="@color/dark_blue_background">
+    app:strokeWidth="@dimen/movie_card_stroke_width">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,9 +32,9 @@
             android:layout_height="0dp"
             android:background="@drawable/movie_card_gradient"
             app:layout_constraintBottom_toBottomOf="@id/moviePicture"
-            app:layout_constraintTop_toTopOf="@id/moviePicture"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/moviePicture" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/like"
@@ -50,11 +50,11 @@
             android:id="@+id/pg"
             android:layout_width="@dimen/movie_card_pg_size"
             android:layout_height="@dimen/movie_card_pg_size"
+            android:layout_marginStart="@dimen/space_8"
             android:layout_marginTop="@dimen/space_8"
             android:background="@drawable/pg_background"
-            android:gravity="center"
-            android:layout_marginStart="@dimen/space_8"
             android:fontFamily="@font/roboto"
+            android:gravity="center"
             android:textColor="@color/white_gray"
             android:textSize="@dimen/textsize_12"
             android:textStyle="bold"
@@ -82,10 +82,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_8"
+            android:text="137 min"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="137 min" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/movieTags"
@@ -93,12 +93,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/movie_card_tags_margin_bottom"
+            android:text="Action, Adventure, Sci-Fi"
             android:textColor="@color/pink"
             android:textSize="@dimen/textsize_8"
             app:layout_constraintBottom_toBottomOf="@id/moviePicture"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Action, Adventure, Sci-Fi" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:id="@+id/movieRatingBar"
@@ -110,10 +110,10 @@
             android:gravity="center_vertical"
             android:progressBackgroundTint="@color/dark_gray"
             android:progressTint="@color/pink"
+            android:rating="4"
             android:stepSize="1"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/moviePicture"
-            android:rating="4" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/movieReviews"
@@ -122,10 +122,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_card_reviews_margin_start"
             android:gravity="center_vertical"
+            android:text="38 reviews"
             app:layout_constraintBottom_toBottomOf="@+id/movieRatingBar"
             app:layout_constraintStart_toEndOf="@+id/movieRatingBar"
-            app:layout_constraintTop_toTopOf="@+id/movieRatingBar"
-            android:text="38 reviews" />
+            app:layout_constraintTop_toTopOf="@+id/movieRatingBar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
