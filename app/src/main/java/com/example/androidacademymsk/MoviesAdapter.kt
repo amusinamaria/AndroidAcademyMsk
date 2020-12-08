@@ -39,7 +39,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
         fun setData(movieCard: MovieCard) {
             Glide.with(itemView.context)
-                .load(R.drawable.mock_picture_movie)
+                .load(movieCard.pictureUrl)
                 .transition(DrawableTransitionOptions.withCrossFade(80))
                 .into(picture)
 
