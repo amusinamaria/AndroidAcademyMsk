@@ -2,6 +2,6 @@
 <resources>
     <integer name="movie_cards_column_count">4</integer>
 
-    <dimen name="movies_recycler_margin_top">24dp</dimen>
-    <dimen name="movies_list_header_margin_top">20dp</dimen>
+    <dimen name="movies_recycler_margin_top">22dp</dimen>
+    <dimen name="movies_list_header_margin_top">10dp</dimen>
 </resources>

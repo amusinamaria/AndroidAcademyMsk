@@ -23,6 +23,8 @@
 
     <dimen name="movies_recycler_margin_top">24dp</dimen>
     <dimen name="movies_list_header_margin_top">20dp</dimen>
+    <dimen name="movies_list_toolbar_height">40dp</dimen>
+    <dimen name="aim_icon_padding">8dp</dimen>
 
     <integer name="movie_cards_column_count">2</integer>
 </resources>

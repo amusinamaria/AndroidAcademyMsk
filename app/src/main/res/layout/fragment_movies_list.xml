@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/moviesListToolbar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/movies_list_toolbar_height"
         android:layout_marginTop="@dimen/movies_list_header_margin_top"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_gravity="center_vertical"
-            android:drawablePadding="8dp"
+            android:drawablePadding="@dimen/aim_icon_padding"
             android:text="Movies list"
             android:textColor="@color/white"
             android:gravity="center_vertical"
