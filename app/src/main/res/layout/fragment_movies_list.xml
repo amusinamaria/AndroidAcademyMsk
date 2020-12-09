@@ -6,42 +6,39 @@
     android:layout_height="match_parent"
     android:background="@color/dark_blue_background">
 
-    <LinearLayout
-        android:id="@+id/headerContainer"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/moviesListToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="40dp"
         android:layout_marginTop="@dimen/movies_list_header_margin_top"
-        android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/aim_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/ic_aim" />
-
         <TextView
-            android:id="@+id/header_title"
+            android:id="@+id/toolbar_title"
             style="@style/MovieCardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_gravity="center_vertical"
+            android:drawablePadding="8dp"
             android:text="Movies list"
             android:textColor="@color/white"
-            android:textSize="@dimen/textsize_14" />
-    </LinearLayout>
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textsize_14"
+            app:drawableStartCompat="@drawable/ic_aim" />
+    </androidx.appcompat.widget.Toolbar>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/movies_recycler_margin_top"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/movies_recycler_margin_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerContainer"
+        app:layout_constraintTop_toBottomOf="@+id/moviesListToolbar"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/movie_card"
         tools:spanCount="2" />
