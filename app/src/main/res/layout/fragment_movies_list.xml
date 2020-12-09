@@ -10,7 +10,6 @@
         android:id="@+id/moviesListToolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/movies_list_toolbar_height"
-        android:layout_marginTop="@dimen/movies_list_header_margin_top"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
