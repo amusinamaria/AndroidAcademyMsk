@@ -2,10 +2,11 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/movie_card_width"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/movie_card_height"
     app:cardBackgroundColor="@color/dark_blue_background"
     app:cardCornerRadius="@dimen/movie_card_corner_radius"
+    tools:layout_width="170dp"
     app:strokeColor="@color/movie_card_stroke"
     app:strokeWidth="@dimen/movie_card_stroke_width">
 

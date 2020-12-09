@@ -4,7 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class MovieCardsSpacingDecoration(private val columnsCount: Int, private val spacing: Int = 60) :
+class MovieCardsSpacingDecoration(private val columnsCount: Int, private val spacing: Int = 34) :
     RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
