@@ -9,6 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/moviesListToolbar"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/movies_list_toolbar_margin_top"
         android:layout_height="@dimen/movies_list_toolbar_height"
         app:layout_constraintTop_toTopOf="parent">
 
