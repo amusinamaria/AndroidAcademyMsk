@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import me.zhanghai.android.materialratingbar.MaterialRatingBar
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
@@ -38,10 +39,20 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         private val pg: TextView = itemView.findViewById(R.id.pg)
 
         fun setData(movieCard: MovieCard) {
+            val width = picture.layoutParams.width
+
             Glide.with(itemView.context)
                 .load(movieCard.pictureUrl)
+
+//                .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                .apply(RequestOptions.bitmapTransform(MoviePictureTransformation(width)))
+
+
                 .transition(DrawableTransitionOptions.withCrossFade(80))
                 .into(picture)
+
+
+
 
             title.text = movieCard.title
             ratingBar.rating = movieCard.rating.toFloat()

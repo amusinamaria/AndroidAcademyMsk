@@ -59,6 +59,13 @@ class MockDataSource {
                 "6+",
                 5,
                 "https://artworks.thetvdb.com/banners/series/309235/seasons/788319/posters/62028073_t.jpg"
+            ),
+            MovieCard(
+                "Wide card for testing",
+                100,
+                "6+",
+                5,
+                "https://i.ytimg.com/vi/kUsEzL3VXKA/maxresdefault.jpg"
             )
         )
     }

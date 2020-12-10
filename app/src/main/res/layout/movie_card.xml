@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/movie_card_height"
+    android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/dark_blue_background"
     app:cardCornerRadius="@dimen/movie_card_corner_radius"
-    tools:layout_width="170dp"
     app:strokeColor="@color/movie_card_stroke"
-    app:strokeWidth="@dimen/movie_card_stroke_width">
+    app:strokeWidth="@dimen/movie_card_stroke_width"
+    tools:layout_height="296dp"
+    tools:layout_width="170dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +21,11 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/movie_card_stroke_width"
             android:layout_marginBottom="@dimen/movie_card_picture_margin_bottom"
+            android:adjustViewBounds="true"
+            android:paddingHorizontal="4dp"
             android:scaleType="centerCrop"
+            android:paddingVertical="2dp"
+            app:layout_constraintDimensionRatio="166:248"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
