@@ -45,7 +45,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         fun setData(movieCard: MovieCard) {
             val multiTransformation = MultiTransformation(
                 CenterCrop(),
-                RoundedCornersTransformation(8, 1, RoundedCornersTransformation.CornerType.TOP)
+                RoundedCornersTransformation(14, 1, RoundedCornersTransformation.CornerType.TOP)
             )
 
             Glide.with(itemView.context)
