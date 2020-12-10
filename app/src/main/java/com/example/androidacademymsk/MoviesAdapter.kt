@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import me.zhanghai.android.materialratingbar.MaterialRatingBar
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
@@ -43,7 +43,10 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         private val pg: TextView = itemView.findViewById(R.id.pg)
 
         fun setData(movieCard: MovieCard) {
-            val multiTransformation = MultiTransformation(CenterCrop(), RoundedCorners(40.dp))
+            val multiTransformation = MultiTransformation(
+                CenterCrop(),
+                RoundedCornersTransformation(8, 1, RoundedCornersTransformation.CornerType.TOP)
+            )
 
             Glide.with(itemView.context)
                     .load(movieCard.pictureUrl)
