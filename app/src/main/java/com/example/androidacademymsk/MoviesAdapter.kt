@@ -1,5 +1,6 @@
 package com.example.androidacademymsk
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import me.zhanghai.android.materialratingbar.MaterialRatingBar
@@ -17,7 +21,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
         )
     }
 
@@ -39,20 +43,13 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         private val pg: TextView = itemView.findViewById(R.id.pg)
 
         fun setData(movieCard: MovieCard) {
-            val width = picture.layoutParams.width
+            val multiTransformation = MultiTransformation(CenterCrop(), RoundedCorners(40.dp))
 
             Glide.with(itemView.context)
-                .load(movieCard.pictureUrl)
-
-//                .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-                .apply(RequestOptions.bitmapTransform(MoviePictureTransformation(width)))
-
-
-                .transition(DrawableTransitionOptions.withCrossFade(80))
-                .into(picture)
-
-
-
+                    .load(movieCard.pictureUrl)
+                    .apply(RequestOptions.bitmapTransform(multiTransformation))
+                    .transition(DrawableTransitionOptions.withCrossFade(80))
+                    .into(picture)
 
             title.text = movieCard.title
             ratingBar.rating = movieCard.rating.toFloat()
@@ -60,3 +57,6 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         }
     }
 }
+
+val Int.dp: Int
+    get() = (this / Resources.getSystem().displayMetrics.density).toInt()
