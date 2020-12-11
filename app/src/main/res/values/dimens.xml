@@ -17,13 +17,14 @@
     <dimen name="movie_card_like_margin_top">13dp</dimen>
     <dimen name="movie_card_ratingbar_height">10dp</dimen>
     <dimen name="movie_card_reviews_margin_start">6dp</dimen>
+    <dimen name="movie_card_picture_padding">2dp</dimen>
+    <dimen name="movie_card_pg_size">24dp</dimen>
 
     <dimen name="movies_recycler_margin_top">28dp</dimen>
     <dimen name="movies_list_toolbar_margin_top">20dp</dimen>
     <dimen name="movies_list_toolbar_height">40dp</dimen>
     <dimen name="aim_icon_padding">6dp</dimen>
     <dimen name="toolbar_shadow_height">5dp</dimen>
-    <dimen name="movie_card_picture_padding">2dp</dimen>
 
     <integer name="movie_cards_column_count">2</integer>
 </resources>

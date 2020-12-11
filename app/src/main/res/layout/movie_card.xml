@@ -53,8 +53,8 @@
 
         <TextView
             android:id="@+id/pg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/movie_card_pg_size"
+            android:layout_height="@dimen/movie_card_pg_size"
             android:layout_marginStart="@dimen/space_8"
             android:layout_marginTop="@dimen/space_8"
             android:background="@drawable/pg_background"
