@@ -21,6 +21,7 @@
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/movie_card_picture_margin_bottom"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/movie_cover_picture_description"
             android:paddingHorizontal="2dp"
             android:paddingVertical="2dp"
             android:scaleType="centerCrop"

@@ -1,6 +1,5 @@
 package com.example.androidacademymsk
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,6 +59,3 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         }
     }
 }
-
-val Int.dp: Int
-    get() = (this / Resources.getSystem().displayMetrics.density).toInt()
