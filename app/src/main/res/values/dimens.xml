@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="space_2">2dp</dimen>
     <dimen name="space_8">8dp</dimen>
+    <dimen name="space_16">16dp</dimen>
 
     <dimen name="textsize_8">8dp</dimen>
     <dimen name="textsize_12">12dp</dimen>
@@ -20,6 +22,8 @@
     <dimen name="movies_list_toolbar_margin_top">20dp</dimen>
     <dimen name="movies_list_toolbar_height">40dp</dimen>
     <dimen name="aim_icon_padding">6dp</dimen>
+    <dimen name="toolbar_shadow_height">5dp</dimen>
+    <dimen name="movie_card_picture_padding">2dp</dimen>
 
     <integer name="movie_cards_column_count">2</integer>
 </resources>

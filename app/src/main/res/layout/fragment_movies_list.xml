@@ -9,8 +9,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/moviesListToolbar"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/movies_list_toolbar_margin_top"
         android:layout_height="@dimen/movies_list_toolbar_height"
+        android:layout_marginTop="@dimen/movies_list_toolbar_margin_top"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/space_16"
             android:drawablePadding="@dimen/aim_icon_padding"
             android:gravity="center_vertical"
             android:text="@string/movies_list"
@@ -46,7 +46,7 @@
         android:id="@+id/goToDetailButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/space_16"
         android:text="GO TO DETAIL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
     <View
         android:id="@+id/toolbarShadow"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="@dimen/toolbar_shadow_height"
         android:background="@drawable/toolbar_shadow"
         app:layout_constraintTop_toBottomOf="@+id/moviesListToolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
