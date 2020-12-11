@@ -31,9 +31,11 @@ class FragmentMoviesList : Fragment() {
         }
         moviesRecycler = view.findViewById(R.id.movies_recycler)
         val columnsCount: Int = resources.getInteger(R.integer.movie_cards_column_count)
-        moviesRecycler?.layoutManager = GridLayoutManager(context, columnsCount)
-        moviesRecycler?.addItemDecoration(MovieCardsSpacingDecoration(columnsCount))
-        moviesRecycler?.adapter = MoviesAdapter()
+        moviesRecycler?.apply {
+            layoutManager = GridLayoutManager(context, columnsCount)
+            addItemDecoration(MovieCardsSpacingDecoration(columnsCount))
+            adapter = MoviesAdapter()
+        }
     }
 
     override fun onAttach(context: Context) {

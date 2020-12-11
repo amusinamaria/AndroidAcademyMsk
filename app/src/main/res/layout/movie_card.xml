@@ -71,13 +71,13 @@
             style="@style/MovieCardText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/movie_card_title_margin_bottom"
+            android:layout_marginTop="@dimen/space_8"
             android:textColor="@color/light_gray"
             android:textSize="@dimen/textsize_14"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moviePicture"
             tools:text="Black Widow" />
 
         <TextView
@@ -96,11 +96,12 @@
             style="@style/MovieCardText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/movie_card_tags_margin_bottom"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_vertical"
             android:text="Action, Adventure, Sci-Fi"
             android:textColor="@color/pink"
             android:textSize="@dimen/textsize_8"
-            app:layout_constraintBottom_toBottomOf="@id/moviePicture"
+            app:layout_constraintBottom_toTopOf="@id/movieRatingBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -110,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/movie_card_ratingbar_height"
             android:layout_marginStart="@dimen/space_8"
-            android:layout_marginBottom="@dimen/movie_card_ratingbar_margin_bottom"
+            android:layout_marginBottom="@dimen/space_8"
             android:gravity="center_vertical"
             android:progressBackgroundTint="@color/dark_gray"
             android:progressTint="@color/pink"
