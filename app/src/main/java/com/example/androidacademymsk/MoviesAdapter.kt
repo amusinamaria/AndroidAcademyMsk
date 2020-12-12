@@ -7,6 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
+import me.zhanghai.android.materialratingbar.MaterialRatingBar
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
@@ -14,7 +20,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
         )
     }
 
@@ -30,15 +36,26 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val title: TextView? = itemView.findViewById(R.id.movie_title)
-        private val picture: ImageView? = itemView.findViewById(R.id.movie_picture)
+        private val title: TextView = itemView.findViewById(R.id.movieTitle)
+        private val picture: ImageView = itemView.findViewById(R.id.moviePicture)
+        private val ratingBar: MaterialRatingBar = itemView.findViewById(R.id.movieRatingBar)
+        private val pg: TextView = itemView.findViewById(R.id.pg)
 
         fun setData(movieCard: MovieCard) {
-            Glide.with(itemView.context)
-                .load(R.drawable.mock_picture_movie)
-                .into(picture)
+            val multiTransformation = MultiTransformation(
+                CenterCrop(),
+                RoundedCornersTransformation(14, 1, RoundedCornersTransformation.CornerType.TOP)
+            )
 
-            title?.text = movieCard.title
+            Glide.with(itemView.context)
+                    .load(movieCard.pictureUrl)
+                    .apply(RequestOptions.bitmapTransform(multiTransformation))
+                    .transition(DrawableTransitionOptions.withCrossFade(80))
+                    .into(picture)
+
+            title.text = movieCard.title
+            ratingBar.rating = movieCard.rating.toFloat()
+            pg.text = movieCard.pg
         }
     }
 }

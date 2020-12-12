@@ -13,4 +13,5 @@
     <color name="dark_gray">#6D6D80</color>
     <color name="pink">#FF3466</color>
     <color name="dark_blue_background">#191926</color>
+    <color name="movie_card_stroke">#2e2e3d</color>
 </resources>

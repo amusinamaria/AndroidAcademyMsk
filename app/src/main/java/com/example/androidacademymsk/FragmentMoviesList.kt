@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class FragmentMoviesList : Fragment() {
 
     private var listener: MovieClickListener? = null
-    private var moviesRecycler: RecyclerView? = null
+    private lateinit var moviesRecycler: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +30,12 @@ class FragmentMoviesList : Fragment() {
             }
         }
         moviesRecycler = view.findViewById(R.id.movies_recycler)
-        moviesRecycler?.layoutManager = GridLayoutManager(context, 2)
-        moviesRecycler?.adapter = MoviesAdapter()
+        val columnsCount: Int = resources.getInteger(R.integer.movie_cards_column_count)
+        moviesRecycler.apply {
+            layoutManager = GridLayoutManager(context, columnsCount)
+            addItemDecoration(MovieCardsSpacingDecoration(columnsCount))
+            adapter = MoviesAdapter()
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -47,7 +51,7 @@ class FragmentMoviesList : Fragment() {
     }
 
     private fun updateData() {
-        (moviesRecycler?.adapter as? MoviesAdapter)?.apply {
+        (moviesRecycler.adapter as? MoviesAdapter)?.apply {
             bindMovieCards(MockDataSource().getMovieCards())
         }
     }
