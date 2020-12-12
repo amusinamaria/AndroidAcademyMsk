@@ -30,15 +30,15 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val title: TextView? = itemView.findViewById(R.id.movie_title)
-        private val picture: ImageView? = itemView.findViewById(R.id.movie_picture)
+        private val title: TextView = itemView.findViewById(R.id.movie_title)
+        private val picture: ImageView = itemView.findViewById(R.id.movie_picture)
 
         fun setData(movieCard: MovieCard) {
             Glide.with(itemView.context)
                 .load(R.drawable.mock_picture_movie)
                 .into(picture)
 
-            title?.text = movieCard.title
+            title.text = movieCard.title
         }
     }
 }

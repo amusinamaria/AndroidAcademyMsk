@@ -7,9 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
 
@@ -37,10 +39,15 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
         private val picture: ImageView = itemView.findViewById(R.id.castPhoto)
 
         fun setData(castCard: CastCard) {
+            val multiTransformation = MultiTransformation(
+                CenterCrop(),
+                RoundedCornersTransformation(4, 0)
+            )
+
             Glide.with(itemView.context)
                 .load(castCard.url)
+                .apply(RequestOptions.bitmapTransform(multiTransformation))
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(15)))
                 .into(picture)
 
             name.text = castCard.name
