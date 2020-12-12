@@ -38,9 +38,9 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
 
         fun setData(castCard: CastCard) {
             Glide.with(itemView.context)
-                .load(R.drawable.mock_picture_bieber)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(4)))
+                .load(castCard.url)
                 .transition(DrawableTransitionOptions.withCrossFade())
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(15)))
                 .into(picture)
 
             name?.text = castCard.name
