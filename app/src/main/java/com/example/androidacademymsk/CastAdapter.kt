@@ -33,7 +33,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
     }
 
     class CastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val name: TextView? = itemView.findViewById(R.id.castName)
+        private val name: TextView = itemView.findViewById(R.id.castName)
         private val picture: ImageView = itemView.findViewById(R.id.castPhoto)
 
         fun setData(castCard: CastCard) {
@@ -43,7 +43,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(15)))
                 .into(picture)
 
-            name?.text = castCard.name
+            name.text = castCard.name
         }
     }
 }
