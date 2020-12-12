@@ -24,7 +24,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CastViewHolder, position: Int) {
-        holder.setData(castCards[position])
+        holder.bindData(castCards[position])
     }
 
     override fun getItemCount(): Int = castCards.size
@@ -38,7 +38,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
         private val name: TextView = itemView.findViewById(R.id.castName)
         private val picture: ImageView = itemView.findViewById(R.id.castPhoto)
 
-        fun setData(castCard: CastCard) {
+        fun bindData(castCard: CastCard) {
             val multiTransformation = MultiTransformation(
                 CenterCrop(),
                 RoundedCornersTransformation(4, 0)
