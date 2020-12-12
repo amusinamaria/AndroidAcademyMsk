@@ -6,6 +6,7 @@
     <dimen name="cast_photo_size">80dp</dimen>
     <dimen name="cast_name_margin_top">6dp</dimen>
     <dimen name="cast_name_margin_end">10dp</dimen>
+
     <dimen name="space_2">2dp</dimen>
     <dimen name="space_8">8dp</dimen>
     <dimen name="space_16">16dp</dimen>
