@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 class FragmentMoviesDetails : Fragment() {
 
     private lateinit var castRecycler: RecyclerView
-    private var castAdapter: CastAdapter = CastAdapter()
+    private lateinit var castAdapter: CastAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
