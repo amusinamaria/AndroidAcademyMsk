@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FragmentMoviesDetails : Fragment() {
 
-    private var castRecycler: RecyclerView? = null
+    private lateinit var castRecycler: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +25,7 @@ class FragmentMoviesDetails : Fragment() {
             fragmentManager?.popBackStack()
         }
         castRecycler = view.findViewById(R.id.castRecycler)
-        castRecycler?.apply {
+        castRecycler.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
             adapter = CastAdapter().apply {
@@ -40,7 +40,7 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     private fun updateCastData() {
-        (castRecycler?.adapter as? CastAdapter)?.apply {
+        (castRecycler.adapter as? CastAdapter)?.apply {
             bindCastCards(MockDataSource().getCastCards())
         }
     }
