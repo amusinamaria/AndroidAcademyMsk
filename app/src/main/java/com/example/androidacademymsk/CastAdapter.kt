@@ -33,7 +33,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
 
     class CastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val name: TextView? = itemView.findViewById(R.id.castName)
-        private val picture: ImageView? = itemView.findViewById(R.id.castPhoto)
+        private val picture: ImageView = itemView.findViewById(R.id.castPhoto)
 
         fun setData(castCard: CastCard) {
             Glide.with(itemView.context)
