@@ -25,11 +25,13 @@ class FragmentMoviesDetails : Fragment() {
             fragmentManager?.popBackStack()
         }
         castRecycler = view.findViewById(R.id.castRecycler)
-        castRecycler?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        castRecycler?.setHasFixedSize(true)
-        val adapter = CastAdapter()
-        adapter.setHasStableIds(true)
-        castRecycler?.adapter = adapter
+        castRecycler?.apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            setHasFixedSize(true)
+            adapter = CastAdapter().apply {
+                setHasStableIds(true)
+            }
+        }
     }
 
     override fun onStart() {
