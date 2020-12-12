@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 
 class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
@@ -39,6 +40,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
             Glide.with(itemView.context)
                 .load(R.drawable.mock_picture_bieber)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(4)))
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(picture)
 
             name?.text = castCard.name
