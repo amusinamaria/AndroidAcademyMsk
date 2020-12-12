@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Like" parent="">
+        <item name="android:button">@drawable/like_selector</item>
+    </style>
+
+    <style name="MovieCardText">
+        <item name="android:layout_marginStart">@dimen/space_8</item>
+        <item name="android:layout_marginEnd">@dimen/space_8</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="MovieCardReviewsAndDuration" parent="MovieCardText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/textsize_8</item>
+    </style>
+</resources>

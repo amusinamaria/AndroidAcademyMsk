@@ -7,6 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
@@ -30,15 +35,24 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val title: TextView = itemView.findViewById(R.id.movie_title)
-        private val picture: ImageView = itemView.findViewById(R.id.movie_picture)
+        private val title: TextView = itemView.findViewById(R.id.movieTitle)
+        private val picture: ImageView = itemView.findViewById(R.id.moviePicture)
+        private val pg: TextView = itemView.findViewById(R.id.pg)
 
         fun setData(movieCard: MovieCard) {
+            val multiTransformation = MultiTransformation(
+                CenterCrop(),
+                RoundedCornersTransformation(14, 1, RoundedCornersTransformation.CornerType.TOP)
+            )
+
             Glide.with(itemView.context)
-                .load(R.drawable.mock_picture_movie)
+                .load(movieCard.pictureUrl)
+                .apply(RequestOptions.bitmapTransform(multiTransformation))
+                .transition(DrawableTransitionOptions.withCrossFade(80))
                 .into(picture)
 
             title.text = movieCard.title
+            pg.text = movieCard.pg
         }
     }
 }
