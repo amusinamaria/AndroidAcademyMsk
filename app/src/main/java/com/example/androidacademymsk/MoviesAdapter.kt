@@ -19,7 +19,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
         )
     }
 
@@ -46,10 +46,10 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
             )
 
             Glide.with(itemView.context)
-                    .load(movieCard.pictureUrl)
-                    .apply(RequestOptions.bitmapTransform(multiTransformation))
-                    .transition(DrawableTransitionOptions.withCrossFade(80))
-                    .into(picture)
+                .load(movieCard.pictureUrl)
+                .apply(RequestOptions.bitmapTransform(multiTransformation))
+                .transition(DrawableTransitionOptions.withCrossFade(80))
+                .into(picture)
 
             title.text = movieCard.title
             pg.text = movieCard.pg
