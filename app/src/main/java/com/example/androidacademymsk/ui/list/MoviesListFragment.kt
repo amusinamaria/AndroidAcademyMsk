@@ -13,7 +13,7 @@ import com.example.androidacademymsk.R
 import com.example.androidacademymsk.repository.MockDataSource
 
 
-class FragmentMoviesList : Fragment() {
+class MoviesListFragment : Fragment() {
 
     private var listener: MovieClickListener? = null
     private lateinit var moviesRecycler: RecyclerView

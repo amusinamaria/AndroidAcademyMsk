@@ -3,10 +3,10 @@ package com.example.androidacademymsk.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidacademymsk.R
-import com.example.androidacademymsk.ui.details.FragmentMoviesDetails
-import com.example.androidacademymsk.ui.list.FragmentMoviesList
+import com.example.androidacademymsk.ui.details.DetailsFragment
+import com.example.androidacademymsk.ui.list.MoviesListFragment
 
-class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener {
+class MainActivity : AppCompatActivity(), MoviesListFragment.MovieClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .apply {
-                    add(R.id.fragments_container, FragmentMoviesList())
+                    add(R.id.fragments_container, MoviesListFragment())
                     commit()
                 }
         }
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener 
     override fun onClickShowMovieDetails() {
         supportFragmentManager.beginTransaction()
             .apply {
-                add(R.id.fragments_container, FragmentMoviesDetails())
+                add(R.id.fragments_container, DetailsFragment())
                 addToBackStack(null)
                 commit()
             }

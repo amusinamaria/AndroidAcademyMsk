@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidacademymsk.R
 import com.example.androidacademymsk.repository.MockDataSource
 
-class FragmentMoviesDetails : Fragment() {
+class DetailsFragment : Fragment() {
 
     private lateinit var castRecycler: RecyclerView
     private lateinit var castAdapter: CastAdapter
