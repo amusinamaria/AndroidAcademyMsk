@@ -1,4 +1,4 @@
-package com.example.androidacademymsk
+package com.example.androidacademymsk.ui.details
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,8 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.androidacademymsk.R
+import com.example.androidacademymsk.repository.CastCard
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {

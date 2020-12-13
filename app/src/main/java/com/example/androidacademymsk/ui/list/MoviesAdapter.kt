@@ -1,4 +1,4 @@
-package com.example.androidacademymsk
+package com.example.androidacademymsk.ui.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,8 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.androidacademymsk.R
+import com.example.androidacademymsk.repository.MovieCard
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {

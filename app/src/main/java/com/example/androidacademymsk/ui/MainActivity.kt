@@ -1,7 +1,10 @@
-package com.example.androidacademymsk
+package com.example.androidacademymsk.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidacademymsk.R
+import com.example.androidacademymsk.ui.details.FragmentMoviesDetails
+import com.example.androidacademymsk.ui.list.FragmentMoviesList
 
 class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieClickListener {
 

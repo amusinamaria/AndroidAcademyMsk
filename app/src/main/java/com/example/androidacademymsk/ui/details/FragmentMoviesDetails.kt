@@ -1,4 +1,4 @@
-package com.example.androidacademymsk
+package com.example.androidacademymsk.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidacademymsk.R
+import com.example.androidacademymsk.repository.MockDataSource
 
 class FragmentMoviesDetails : Fragment() {
 
