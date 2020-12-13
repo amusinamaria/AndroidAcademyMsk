@@ -15,6 +15,7 @@ class FragmentMoviesList : Fragment() {
 
     private var listener: MovieClickListener? = null
     private lateinit var moviesRecycler: RecyclerView
+    private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +35,9 @@ class FragmentMoviesList : Fragment() {
         moviesRecycler.apply {
             layoutManager = GridLayoutManager(context, columnsCount)
             addItemDecoration(MovieCardsSpacingDecoration(columnsCount))
-            adapter = MoviesAdapter()
         }
+        moviesAdapter = MoviesAdapter()
+        moviesRecycler.adapter = moviesAdapter
     }
 
     override fun onAttach(context: Context) {
@@ -51,7 +53,7 @@ class FragmentMoviesList : Fragment() {
     }
 
     private fun updateData() {
-        (moviesRecycler.adapter as? MoviesAdapter)?.apply {
+        moviesAdapter.apply {
             bindMovieCards(MockDataSource().getMovieCards())
         }
     }
