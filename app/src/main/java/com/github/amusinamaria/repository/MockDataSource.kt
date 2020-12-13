@@ -1,4 +1,4 @@
-package com.example.androidacademymsk.repository
+package com.github.amusinamaria.repository
 
 class MockDataSource {
     fun getMovieCards(): List<MovieCard> {

@@ -1,10 +1,10 @@
-package com.example.androidacademymsk.ui
+package com.github.amusinamaria.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidacademymsk.R
-import com.example.androidacademymsk.ui.details.DetailsFragment
-import com.example.androidacademymsk.ui.list.MoviesListFragment
+import com.github.amusinamaria.R
+import com.github.amusinamaria.ui.details.DetailsFragment
+import com.github.amusinamaria.ui.list.MoviesListFragment
 
 class MainActivity : AppCompatActivity(), MoviesListFragment.MovieClickListener {
 

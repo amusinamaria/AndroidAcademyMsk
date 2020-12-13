@@ -1,4 +1,4 @@
-package com.example.androidacademymsk.ui.list
+package com.github.amusinamaria.ui.list
 
 import android.content.Context
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidacademymsk.R
-import com.example.androidacademymsk.repository.MockDataSource
+import com.github.amusinamaria.R
+import com.github.amusinamaria.repository.MockDataSource
 
 
 class MoviesListFragment : Fragment() {
