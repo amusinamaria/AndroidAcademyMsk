@@ -2,6 +2,7 @@ package com.github.amusinamaria.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import com.github.amusinamaria.R
 import com.github.amusinamaria.repository.MovieCard
 import com.github.amusinamaria.ui.details.DetailsFragment
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     fun showMovieDetails(movieCard: MovieCard) {
         supportFragmentManager.beginTransaction()
+            .setTransition(TRANSIT_FRAGMENT_FADE)
             .apply {
                 add(R.id.fragments_container, DetailsFragment())
                 addToBackStack(null)
