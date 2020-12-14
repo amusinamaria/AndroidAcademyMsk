@@ -15,7 +15,8 @@ import com.github.amusinamaria.R
 import com.github.amusinamaria.repository.MovieCard
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
+class MoviesAdapter(private val clickListener: (MovieCard) -> Unit) :
+    RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     private var movieCards = listOf<MovieCard>()
 
@@ -27,6 +28,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.setData(movieCards[position])
+        holder.itemView.setOnClickListener { clickListener(movieCards[position]) }
     }
 
     override fun getItemCount(): Int = movieCards.size
