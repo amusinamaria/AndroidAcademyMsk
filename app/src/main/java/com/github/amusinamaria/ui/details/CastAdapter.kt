@@ -50,6 +50,8 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
                 .load(castCard.url)
                 .apply(RequestOptions.bitmapTransform(multiTransformation))
                 .transition(DrawableTransitionOptions.withCrossFade())
+                .placeholder(R.drawable.ic_cast_placeholder)
+                .fallback(R.drawable.ic_cast_placeholder)
                 .into(picture)
 
             name.text = castCard.name

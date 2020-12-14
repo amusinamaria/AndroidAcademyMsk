@@ -51,6 +51,8 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
                 .load(movieCard.pictureUrl)
                 .apply(RequestOptions.bitmapTransform(multiTransformation))
                 .transition(DrawableTransitionOptions.withCrossFade(80))
+                .placeholder(R.drawable.ic_movie_placeholder)
+                .fallback(R.drawable.ic_movie_placeholder)
                 .into(picture)
 
             title.text = movieCard.title
