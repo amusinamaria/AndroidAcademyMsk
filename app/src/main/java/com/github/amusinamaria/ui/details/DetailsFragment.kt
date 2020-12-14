@@ -1,4 +1,4 @@
-package com.example.androidacademymsk
+package com.github.amusinamaria.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,10 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.amusinamaria.R
+import com.github.amusinamaria.repository.MockDataSource
 
-class FragmentMoviesDetails : Fragment() {
+class DetailsFragment : Fragment() {
 
     private lateinit var castRecycler: RecyclerView
     private lateinit var castAdapter: CastAdapter

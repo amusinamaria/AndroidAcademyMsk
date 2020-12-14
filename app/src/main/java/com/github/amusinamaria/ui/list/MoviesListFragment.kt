@@ -1,4 +1,4 @@
-package com.example.androidacademymsk
+package com.github.amusinamaria.ui.list
 
 import android.content.Context
 import android.os.Bundle
@@ -9,12 +9,15 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.amusinamaria.R
+import com.github.amusinamaria.repository.MockDataSource
 
 
-class FragmentMoviesList : Fragment() {
+class MoviesListFragment : Fragment() {
 
     private var listener: MovieClickListener? = null
     private lateinit var moviesRecycler: RecyclerView
+    private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +37,9 @@ class FragmentMoviesList : Fragment() {
         moviesRecycler.apply {
             layoutManager = GridLayoutManager(context, columnsCount)
             addItemDecoration(MovieCardsSpacingDecoration(columnsCount))
-            adapter = MoviesAdapter()
         }
+        moviesAdapter = MoviesAdapter()
+        moviesRecycler.adapter = moviesAdapter
     }
 
     override fun onAttach(context: Context) {
@@ -51,7 +55,7 @@ class FragmentMoviesList : Fragment() {
     }
 
     private fun updateData() {
-        (moviesRecycler.adapter as? MoviesAdapter)?.apply {
+        moviesAdapter.apply {
             bindMovieCards(MockDataSource().getMovieCards())
         }
     }

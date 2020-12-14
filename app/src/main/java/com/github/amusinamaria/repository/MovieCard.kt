@@ -1,4 +1,4 @@
-package com.example.androidacademymsk
+package com.github.amusinamaria.repository
 
 data class MovieCard(
     val title: String,
