@@ -4,15 +4,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import com.github.amusinamaria.R
+import com.github.amusinamaria.databinding.ActivityMainBinding
 import com.github.amusinamaria.repository.MovieCard
 import com.github.amusinamaria.ui.details.DetailsFragment
 import com.github.amusinamaria.ui.list.MoviesListFragment
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
