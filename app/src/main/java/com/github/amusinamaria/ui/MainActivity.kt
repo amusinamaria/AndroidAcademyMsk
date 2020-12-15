@@ -18,31 +18,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .apply {
-                    add(R.id.fragments_container, MoviesListFragment())
-                    commit()
-                }
-        }
-    }
-
-    fun showMovieDetails(movieCard: MovieCard) {
-        val detailsFragment = DetailsFragment()
-        val args = Bundle()
-        args.putParcelable(MOVIE_ARGS_KEY, movieCard)
-        detailsFragment.arguments = args
-
-        supportFragmentManager.beginTransaction()
-            .setTransition(TRANSIT_FRAGMENT_FADE)
+        savedInstanceState ?: supportFragmentManager.beginTransaction()
             .apply {
-                add(R.id.fragments_container, detailsFragment)
-                addToBackStack(null)
+                add(R.id.fragments_container, MoviesListFragment())
                 commit()
             }
     }
 
-    companion object {
-        const val MOVIE_ARGS_KEY = "movie"
+    fun showMovieDetails(movieCard: MovieCard) {
+        supportFragmentManager.beginTransaction()
+            .setTransition(TRANSIT_FRAGMENT_FADE)
+            .apply {
+                add(R.id.fragments_container, DetailsFragment.newInstance(movieCard))
+                addToBackStack(null)
+                commit()
+            }
     }
 }

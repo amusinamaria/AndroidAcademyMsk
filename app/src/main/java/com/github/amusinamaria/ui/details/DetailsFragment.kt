@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amusinamaria.databinding.FragmentDetailsBinding
 import com.github.amusinamaria.repository.MovieCard
-import com.github.amusinamaria.ui.MainActivity.Companion.MOVIE_ARGS_KEY
 
 class DetailsFragment : Fragment() {
 
@@ -58,5 +57,17 @@ class DetailsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val MOVIE_ARGS_KEY = "movie"
+
+        fun newInstance(movieCard: MovieCard): DetailsFragment {
+            val detailsFragment = DetailsFragment()
+            val args = Bundle()
+            args.putParcelable(MOVIE_ARGS_KEY, movieCard)
+            detailsFragment.arguments = args
+            return detailsFragment
+        }
     }
 }

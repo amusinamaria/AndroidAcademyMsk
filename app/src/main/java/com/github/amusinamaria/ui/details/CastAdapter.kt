@@ -13,7 +13,6 @@ import com.github.amusinamaria.databinding.CastCardBinding
 import com.github.amusinamaria.repository.CastCard
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-
 class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
 
     private var castCards = listOf<CastCard>()
