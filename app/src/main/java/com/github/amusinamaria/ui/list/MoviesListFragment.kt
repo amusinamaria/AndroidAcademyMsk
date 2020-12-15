@@ -11,7 +11,6 @@ import com.github.amusinamaria.databinding.FragmentMoviesListBinding
 import com.github.amusinamaria.repository.MockDataSource
 import com.github.amusinamaria.ui.MainActivity
 
-
 class MoviesListFragment : Fragment() {
 
     private var _binding: FragmentMoviesListBinding? = null
