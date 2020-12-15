@@ -15,7 +15,6 @@ class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var castRecycler: RecyclerView
     private lateinit var castAdapter: CastAdapter
     private lateinit var movieCard: MovieCard
 
@@ -37,15 +36,14 @@ class DetailsFragment : Fragment() {
         binding.backArrow.setOnClickListener {
             fragmentManager?.popBackStack()
         }
-        castRecycler = binding.castRecycler
-        castRecycler.apply {
+        binding.castRecycler.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
         }
         castAdapter = CastAdapter().apply {
             setHasStableIds(true)
         }
-        castRecycler.adapter = castAdapter
+        binding.castRecycler.adapter = castAdapter
     }
 
     override fun onStart() {
