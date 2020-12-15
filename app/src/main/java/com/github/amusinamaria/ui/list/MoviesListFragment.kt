@@ -8,12 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amusinamaria.R
+import com.github.amusinamaria.databinding.FragmentMoviesListBinding
 import com.github.amusinamaria.repository.MockDataSource
 import com.github.amusinamaria.ui.MainActivity
 
 
 class MoviesListFragment : Fragment() {
 
+    private var _binding: FragmentMoviesListBinding? = null
+    private val binding get() = _binding!!
     private lateinit var moviesRecycler: RecyclerView
     private lateinit var moviesAdapter: MoviesAdapter
 
@@ -21,11 +24,14 @@ class MoviesListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_movies_list, container, false)
+    ): View {
+        _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        moviesRecycler = view.findViewById(R.id.movies_recycler)
+        moviesRecycler = binding.moviesRecycler
         val columnsCount: Int = resources.getInteger(R.integer.movie_cards_column_count)
         moviesRecycler.apply {
             layoutManager = GridLayoutManager(context, columnsCount)
@@ -44,5 +50,10 @@ class MoviesListFragment : Fragment() {
         moviesAdapter.apply {
             bindMovieCards(MockDataSource().getMovieCards())
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
