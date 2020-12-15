@@ -30,20 +30,20 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieCard = arguments?.getParcelable(MOVIE_ARGS_KEY)!!
-        val movieTitle = binding.detailsTitle
-        movieTitle.text = movieCard.title
-
-        binding.backArrow.setOnClickListener {
-            fragmentManager?.popBackStack()
-        }
-        binding.castRecycler.apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            setHasFixedSize(true)
-        }
         castAdapter = CastAdapter().apply {
             setHasStableIds(true)
         }
-        binding.castRecycler.adapter = castAdapter
+        binding.apply {
+            detailsTitle.text = movieCard.title
+            backArrow.setOnClickListener {
+                fragmentManager?.popBackStack()
+            }
+            castRecycler.apply {
+                layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                setHasFixedSize(true)
+            }
+            castRecycler.adapter = castAdapter
+        }
     }
 
     override fun onStart() {
@@ -52,8 +52,11 @@ class DetailsFragment : Fragment() {
     }
 
     private fun updateCastData() {
-        castAdapter.apply {
-            bindCastCards(movieCard.cast)
-        }
+        castAdapter.bindCastCards(movieCard.cast)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
