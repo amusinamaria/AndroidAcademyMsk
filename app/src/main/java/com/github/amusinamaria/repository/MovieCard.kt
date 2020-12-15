@@ -9,5 +9,6 @@ data class MovieCard(
     val duration: Int,
     val pg: String,
     val rating: Int,
-    val pictureUrl: String
+    val pictureUrl: String,
+    val cast: List<CastCard>
 ) : Parcelable

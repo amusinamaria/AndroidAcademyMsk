@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amusinamaria.R
-import com.github.amusinamaria.repository.MockDataSource
 import com.github.amusinamaria.repository.MovieCard
 import com.github.amusinamaria.ui.MainActivity.Companion.MOVIE_ARGS_KEY
 
@@ -18,6 +17,7 @@ class DetailsFragment : Fragment() {
 
     private lateinit var castRecycler: RecyclerView
     private lateinit var castAdapter: CastAdapter
+    private lateinit var movieCard: MovieCard
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,9 +27,9 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val movieCard = arguments?.getParcelable<MovieCard>(MOVIE_ARGS_KEY)
+        movieCard = arguments?.getParcelable(MOVIE_ARGS_KEY)!!
         val movieTitle: TextView = view.findViewById(R.id.detailsTitle)
-        movieTitle.text = movieCard?.title
+        movieTitle.text = movieCard.title
 
         view.findViewById<ImageView>(R.id.backArrow).setOnClickListener {
             fragmentManager?.popBackStack()
@@ -52,7 +52,7 @@ class DetailsFragment : Fragment() {
 
     private fun updateCastData() {
         castAdapter.apply {
-            bindCastCards(MockDataSource().getCastCards())
+            bindCastCards(movieCard.cast)
         }
     }
 }
