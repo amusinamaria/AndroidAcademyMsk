@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.github.amusinamaria.R
+import com.github.amusinamaria.databinding.FragmentDetailsBinding
 import com.github.amusinamaria.repository.MovieCard
 import com.github.amusinamaria.ui.MainActivity.Companion.MOVIE_ARGS_KEY
 
 class DetailsFragment : Fragment() {
 
+    private var _binding: FragmentDetailsBinding? = null
+    private val binding get() = _binding!!
     private lateinit var castRecycler: RecyclerView
     private lateinit var castAdapter: CastAdapter
     private lateinit var movieCard: MovieCard
@@ -23,18 +23,21 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_details, container, false)
+    ): View {
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieCard = arguments?.getParcelable(MOVIE_ARGS_KEY)!!
-        val movieTitle: TextView = view.findViewById(R.id.detailsTitle)
+        val movieTitle = binding.detailsTitle
         movieTitle.text = movieCard.title
 
-        view.findViewById<ImageView>(R.id.backArrow).setOnClickListener {
+        binding.backArrow.setOnClickListener {
             fragmentManager?.popBackStack()
         }
-        castRecycler = view.findViewById(R.id.castRecycler)
+        castRecycler = binding.castRecycler
         castRecycler.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
