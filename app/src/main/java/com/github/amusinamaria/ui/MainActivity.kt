@@ -24,12 +24,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showMovieDetails(movieCard: MovieCard) {
+        val detailsFragment = DetailsFragment()
+        val args = Bundle()
+        args.putParcelable(MOVIE_ARGS_KEY, movieCard)
+        detailsFragment.arguments = args
+
         supportFragmentManager.beginTransaction()
             .setTransition(TRANSIT_FRAGMENT_FADE)
             .apply {
-                add(R.id.fragments_container, DetailsFragment())
+                add(R.id.fragments_container, detailsFragment)
                 addToBackStack(null)
                 commit()
             }
+    }
+
+    companion object {
+        const val MOVIE_ARGS_KEY = "movie"
     }
 }

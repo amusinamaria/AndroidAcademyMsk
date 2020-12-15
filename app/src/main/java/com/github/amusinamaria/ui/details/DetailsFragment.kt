@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amusinamaria.R
 import com.github.amusinamaria.repository.MockDataSource
+import com.github.amusinamaria.repository.MovieCard
+import com.github.amusinamaria.ui.MainActivity.Companion.MOVIE_ARGS_KEY
 
 class DetailsFragment : Fragment() {
 
@@ -24,6 +27,10 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val movieCard = arguments?.getParcelable<MovieCard>(MOVIE_ARGS_KEY)
+        val movieTitle: TextView = view.findViewById(R.id.detailsTitle)
+        movieTitle.text = movieCard?.title
+
         view.findViewById<ImageView>(R.id.backArrow).setOnClickListener {
             fragmentManager?.popBackStack()
         }
