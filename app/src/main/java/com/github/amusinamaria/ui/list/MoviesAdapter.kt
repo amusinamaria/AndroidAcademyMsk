@@ -1,10 +1,7 @@
 package com.github.amusinamaria.ui.list
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -12,21 +9,23 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.github.amusinamaria.R
+import com.github.amusinamaria.databinding.MovieCardBinding
 import com.github.amusinamaria.repository.MovieCard
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
+class MoviesAdapter(private val clickListener: (MovieCard) -> Unit) :
+    RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     private var movieCards = listOf<MovieCard>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        return MovieViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
+        MovieViewHolder(
+            MovieCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
-    }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.setData(movieCards[position])
+        holder.bind(movieCards[position])
+        holder.itemView.setOnClickListener { clickListener(movieCards[position]) }
     }
 
     override fun getItemCount(): Int = movieCards.size
@@ -36,12 +35,10 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val title: TextView = itemView.findViewById(R.id.movieTitle)
-        private val picture: ImageView = itemView.findViewById(R.id.moviePicture)
-        private val pg: TextView = itemView.findViewById(R.id.pg)
+    class MovieViewHolder(private val binding: MovieCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun setData(movieCard: MovieCard) {
+        fun bind(movieCard: MovieCard) {
             val multiTransformation = MultiTransformation(
                 CenterCrop(),
                 RoundedCornersTransformation(14, 1, RoundedCornersTransformation.CornerType.TOP)
@@ -51,10 +48,12 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
                 .load(movieCard.pictureUrl)
                 .apply(RequestOptions.bitmapTransform(multiTransformation))
                 .transition(DrawableTransitionOptions.withCrossFade(80))
-                .into(picture)
+                .placeholder(R.drawable.ic_movie_placeholder)
+                .fallback(R.drawable.ic_movie_placeholder)
+                .into(binding.moviePicture)
 
-            title.text = movieCard.title
-            pg.text = movieCard.pg
+            binding.movieTitle.text = movieCard.title
+            binding.pg.text = movieCard.pg
         }
     }
 }

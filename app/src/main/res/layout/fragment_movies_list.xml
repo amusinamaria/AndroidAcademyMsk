@@ -42,16 +42,6 @@
         tools:listitem="@layout/movie_card"
         tools:spanCount="2" />
 
-    <Button
-        android:id="@+id/goToDetailButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space_16"
-        android:text="GO TO DETAIL"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <View
         android:id="@+id/toolbarShadow"
         android:layout_width="match_parent"
