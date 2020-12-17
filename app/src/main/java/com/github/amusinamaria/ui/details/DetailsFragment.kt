@@ -40,8 +40,8 @@ class DetailsFragment : Fragment() {
             castRecycler.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                 setHasFixedSize(true)
+                adapter = castAdapter
             }
-            castRecycler.adapter = castAdapter
         }
     }
 

@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
 
     fun showMovieDetails(movieCard: MovieCard) {
         supportFragmentManager.beginTransaction()
-            .setTransition(TRANSIT_FRAGMENT_FADE)
             .apply {
+                setTransition(TRANSIT_FRAGMENT_FADE)
                 add(R.id.fragments_container, DetailsFragment.newInstance(movieCard))
                 addToBackStack(null)
                 commit()
