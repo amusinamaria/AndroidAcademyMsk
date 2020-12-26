@@ -1,47 +1,12 @@
-package com.github.amusinamaria.repository
+package com.github.amusinamaria.repository.data
 
 import android.content.Context
-import com.github.amusinamaria.repository.data.Actor
-import com.github.amusinamaria.repository.data.Genre
-import com.github.amusinamaria.repository.data.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 private val jsonFormat = Json { ignoreUnknownKeys = true }
-
-@kotlinx.serialization.Serializable
-private class JsonGenre(val id: Int, val name: String)
-
-@kotlinx.serialization.Serializable
-private class JsonActor(
-    val id: Int,
-    val name: String,
-    @SerialName("profile_path")
-    val profilePicture: String
-)
-
-@kotlinx.serialization.Serializable
-private class JsonMovie(
-    val id: Int,
-    val title: String,
-    @SerialName("poster_path")
-    val posterPicture: String,
-    @SerialName("backdrop_path")
-    val backdropPicture: String,
-    val runtime: Int,
-    @SerialName("genre_ids")
-    val genreIds: List<Int>,
-    val actors: List<Int>,
-    @SerialName("vote_average")
-    val ratings: Float,
-    @SerialName("vote_count")
-    val votesCount: Int,
-    val overview: String,
-    val adult: Boolean
-)
 
 private suspend fun loadGenres(context: Context): List<Genre> = withContext(Dispatchers.IO) {
     val data = readAssetFileToString(context, "genres.json")
@@ -49,7 +14,7 @@ private suspend fun loadGenres(context: Context): List<Genre> = withContext(Disp
 }
 
 internal fun parseGenres(data: String): List<Genre> {
-    val jsonGenres = jsonFormat.decodeFromString<List<JsonGenre>>(data)
+    val jsonGenres = jsonFormat.decodeFromString<List<Genre>>(data)
     return jsonGenres.map { Genre(id = it.id, name = it.name) }
 }
 
@@ -64,8 +29,8 @@ private suspend fun loadActors(context: Context): List<Actor> = withContext(Disp
 }
 
 internal fun parseActors(data: String): List<Actor> {
-    val jsonActors = jsonFormat.decodeFromString<List<JsonActor>>(data)
-    return jsonActors.map { Actor(id = it.id, name = it.name, picture = it.profilePicture) }
+    val jsonActors = jsonFormat.decodeFromString<List<Actor>>(data)
+    return jsonActors.map { Actor(id = it.id, name = it.name, profilePicture = it.profilePicture) }
 }
 
 @Suppress("unused")
