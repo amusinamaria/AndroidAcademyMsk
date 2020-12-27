@@ -35,7 +35,7 @@ class MoviesListFragment : Fragment() {
         val columnsCount: Int = resources.getInteger(R.integer.movie_cards_column_count)
         binding.moviesRecycler.apply {
             layoutManager = GridLayoutManager(context, columnsCount)
-            addItemDecoration(MovieCardsSpacingDecoration(columnsCount))
+            addItemDecoration(MoviesRVSpacingDecoration(columnsCount))
         }
         moviesAdapter = MoviesAdapter { (activity as MainActivity).showMovieDetails(it) }
         binding.moviesRecycler.adapter = moviesAdapter
