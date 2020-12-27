@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amusinamaria.databinding.FragmentDetailsBinding
 import com.github.amusinamaria.repository.MovieCard
+import com.github.amusinamaria.repository.data.Movie
 
 class DetailsFragment : Fragment() {
 
@@ -62,10 +63,10 @@ class DetailsFragment : Fragment() {
     companion object {
         const val MOVIE_ARGS_KEY = "movie"
 
-        fun newInstance(movieCard: MovieCard): DetailsFragment {
+        fun newInstance(movie: Movie): DetailsFragment {
             val detailsFragment = DetailsFragment()
             val args = Bundle()
-            args.putParcelable(MOVIE_ARGS_KEY, movieCard)
+            args.putParcelable(MOVIE_ARGS_KEY, movie)
             detailsFragment.arguments = args
             return detailsFragment
         }

@@ -1,3 +1,9 @@
 package com.github.amusinamaria.repository.data
 
-data class Genre(val id: Int, val name: String)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+import kotlinx.serialization.Serializable
+
+@Parcelize
+@Serializable
+data class Genre(val id: Int, val name: String) : Parcelable

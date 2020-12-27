@@ -8,14 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.amusinamaria.R
 import com.github.amusinamaria.databinding.FragmentMoviesListBinding
-import com.github.amusinamaria.repository.MockDataSource
+import com.github.amusinamaria.repository.data.loadMovies
 import com.github.amusinamaria.ui.MainActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MoviesListFragment : Fragment() {
 
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
     private lateinit var moviesAdapter: MoviesAdapter
+    private val scope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,8 +47,10 @@ class MoviesListFragment : Fragment() {
     }
 
     private fun updateData() {
-        moviesAdapter.apply {
-            bindMovieCards(MockDataSource().getMovieCards())
+        scope.launch {
+            moviesAdapter.apply {
+                bindMovieCards(loadMovies(requireContext()))
+            }
         }
     }
 

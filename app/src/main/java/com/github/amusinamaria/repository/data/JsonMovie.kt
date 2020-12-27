@@ -1,7 +1,9 @@
 package com.github.amusinamaria.repository.data
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class JsonMovie(
     val id: Int,
     val title: String,
