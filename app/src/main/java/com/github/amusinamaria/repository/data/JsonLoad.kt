@@ -14,8 +14,7 @@ private suspend fun loadGenres(context: Context): List<Genre> = withContext(Disp
 }
 
 internal fun parseGenres(data: String): List<Genre> {
-    val jsonGenres = jsonFormat.decodeFromString<List<Genre>>(data)
-    return jsonGenres.map { Genre(id = it.id, name = it.name) }
+    return jsonFormat.decodeFromString(data)
 }
 
 private fun readAssetFileToString(context: Context, fileName: String): String {
@@ -29,8 +28,7 @@ private suspend fun loadActors(context: Context): List<Actor> = withContext(Disp
 }
 
 internal fun parseActors(data: String): List<Actor> {
-    val jsonActors = jsonFormat.decodeFromString<List<Actor>>(data)
-    return jsonActors.map { Actor(id = it.id, name = it.name, profilePicture = it.profilePicture) }
+    return jsonFormat.decodeFromString(data)
 }
 
 @Suppress("unused")
