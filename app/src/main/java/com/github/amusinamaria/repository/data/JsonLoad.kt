@@ -31,7 +31,6 @@ internal fun parseActors(data: String): List<Actor> {
     return jsonFormat.decodeFromString(data)
 }
 
-@Suppress("unused")
 internal suspend fun loadMovies(context: Context): List<Movie> = withContext(Dispatchers.IO) {
     val genresMap = loadGenres(context)
     val actorsMap = loadActors(context)
@@ -51,8 +50,7 @@ internal fun parseMovies(
     val jsonMovies = jsonFormat.decodeFromString<List<JsonMovie>>(data)
 
     return jsonMovies.map { jsonMovie ->
-        @Suppress("unused")
-        (Movie(
+        Movie(
             id = jsonMovie.id,
             title = jsonMovie.title,
             overview = jsonMovie.overview,
@@ -68,6 +66,6 @@ internal fun parseMovies(
             actors = jsonMovie.actors.map {
                 actorsMap[it] ?: throw IllegalArgumentException("Actor not found")
             }
-        ))
+        )
     }
 }
