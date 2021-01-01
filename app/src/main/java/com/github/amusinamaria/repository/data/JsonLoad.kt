@@ -2,6 +2,8 @@ package com.github.amusinamaria.repository.data
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -32,8 +34,16 @@ internal fun parseActors(data: String): List<Actor> {
 }
 
 internal suspend fun loadMovies(context: Context): List<Movie> = withContext(Dispatchers.IO) {
-    val genresMap = loadGenres(context)
-    val actorsMap = loadActors(context)
+    var genresMap = listOf<Genre>()
+    var actorsMap = listOf<Actor>()
+    coroutineScope {
+        launch {
+            genresMap = loadGenres(context)
+        }
+        launch {
+            actorsMap = loadActors(context)
+        }
+    }
 
     val data = readAssetFileToString(context, "data.json")
     parseMovies(data, genresMap, actorsMap)
