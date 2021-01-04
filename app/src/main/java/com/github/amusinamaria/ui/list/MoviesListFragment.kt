@@ -12,6 +12,7 @@ import com.github.amusinamaria.repository.data.loadMovies
 import com.github.amusinamaria.ui.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class MoviesListFragment : Fragment() {
@@ -57,5 +58,6 @@ class MoviesListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        scope.cancel()
     }
 }
