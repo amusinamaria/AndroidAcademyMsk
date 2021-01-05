@@ -15,7 +15,7 @@ private suspend fun loadGenres(context: Context): List<Genre> = withContext(Disp
     parseGenres(data)
 }
 
-internal fun parseGenres(data: String): List<Genre> {
+private fun parseGenres(data: String): List<Genre> {
     return jsonFormat.decodeFromString(data)
 }
 
@@ -29,7 +29,7 @@ private suspend fun loadActors(context: Context): List<Actor> = withContext(Disp
     parseActors(data)
 }
 
-internal fun parseActors(data: String): List<Actor> {
+private fun parseActors(data: String): List<Actor> {
     return jsonFormat.decodeFromString(data)
 }
 
@@ -49,7 +49,7 @@ internal suspend fun loadMovies(context: Context): List<Movie> = withContext(Dis
     parseMovies(data, genresMap, actorsMap)
 }
 
-internal fun parseMovies(
+private fun parseMovies(
     data: String,
     genres: List<Genre>,
     actors: List<Actor>
