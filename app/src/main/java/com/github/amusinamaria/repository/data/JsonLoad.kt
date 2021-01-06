@@ -36,6 +36,7 @@ private fun parseActors(data: String): List<Actor> {
 internal suspend fun loadMovies(context: Context): List<Movie> = withContext(Dispatchers.IO) {
     var genresMap = listOf<Genre>()
     var actorsMap = listOf<Actor>()
+    var data = ""
     coroutineScope {
         launch {
             genresMap = loadGenres(context)
@@ -43,9 +44,10 @@ internal suspend fun loadMovies(context: Context): List<Movie> = withContext(Dis
         launch {
             actorsMap = loadActors(context)
         }
+        launch {
+            data = readAssetFileToString(context, "data.json")
+        }
     }
-
-    val data = readAssetFileToString(context, "data.json")
     parseMovies(data, genresMap, actorsMap)
 }
 
