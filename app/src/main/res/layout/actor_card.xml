@@ -7,14 +7,14 @@
     android:paddingHorizontal="@dimen/cast_card_padding">
 
     <ImageView
-        android:id="@+id/castPhoto"
+        android:id="@+id/actorPhoto"
         android:layout_width="match_parent"
         android:layout_height="@dimen/cast_photo_size"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/castName"
+        android:id="@+id/actorName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"

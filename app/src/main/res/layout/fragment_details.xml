@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@id/backArrow" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/castRecycler"
+        android:id="@+id/actorsRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.432"
-        tools:listitem="@layout/cast_card" />
+        tools:listitem="@layout/actor_card" />
 
     <ImageView
         android:id="@+id/backArrow"

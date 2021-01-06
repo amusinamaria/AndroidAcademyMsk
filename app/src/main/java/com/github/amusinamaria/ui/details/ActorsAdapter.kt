@@ -9,48 +9,48 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.github.amusinamaria.R
-import com.github.amusinamaria.databinding.CastCardBinding
-import com.github.amusinamaria.repository.CastCard
+import com.github.amusinamaria.databinding.ActorCardBinding
+import com.github.amusinamaria.repository.data.Actor
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
+class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
 
-    private var castCards = listOf<CastCard>()
+    private var actors = listOf<Actor>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastViewHolder =
-        CastViewHolder(
-            CastCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder =
+        ActorViewHolder(
+            ActorCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
 
-    override fun onBindViewHolder(holder: CastViewHolder, position: Int) {
-        holder.bind(castCards[position])
+    override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
+        holder.bind(actors[position])
     }
 
-    override fun getItemCount(): Int = castCards.size
+    override fun getItemCount(): Int = actors.size
 
-    fun bindCastCards(newCastCards: List<CastCard>) {
-        castCards = newCastCards
+    fun bindActorsCards(newActors: List<Actor>) {
+        actors = newActors
         notifyDataSetChanged()
     }
 
-    class CastViewHolder(private val binding: CastCardBinding) :
+    class ActorViewHolder(private val binding: ActorCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(castCard: CastCard) {
+        fun bind(actor: Actor) {
             val multiTransformation = MultiTransformation(
                 CenterCrop(),
                 RoundedCornersTransformation(4, 0)
             )
 
             Glide.with(itemView.context)
-                .load(castCard.url)
+                .load(actor.profilePicture)
                 .apply(RequestOptions.bitmapTransform(multiTransformation))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .placeholder(R.drawable.ic_cast_placeholder)
                 .fallback(R.drawable.ic_cast_placeholder)
-                .into(binding.castPhoto)
+                .into(binding.actorPhoto)
 
-            binding.castName.text = castCard.name
+            binding.actorName.text = actor.name
         }
     }
 }

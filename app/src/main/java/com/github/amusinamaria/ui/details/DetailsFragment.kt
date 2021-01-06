@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amusinamaria.databinding.FragmentDetailsBinding
-import com.github.amusinamaria.repository.MovieCard
+import com.github.amusinamaria.repository.data.Movie
 
 class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var castAdapter: CastAdapter
-    private lateinit var movieCard: MovieCard
+    private lateinit var actorsAdapter: ActorsAdapter
+    private lateinit var movie: Movie
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,30 +28,30 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieCard = arguments?.getParcelable(MOVIE_ARGS_KEY)!!
-        castAdapter = CastAdapter().apply {
+        movie = arguments?.getParcelable(MOVIE_ARGS_KEY)!!
+        actorsAdapter = ActorsAdapter().apply {
             setHasStableIds(true)
         }
         binding.apply {
-            detailsTitle.text = movieCard.title
+            detailsTitle.text = movie.title
             backArrow.setOnClickListener {
                 fragmentManager?.popBackStack()
             }
-            castRecycler.apply {
+            actorsRecycler.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                 setHasFixedSize(true)
+                adapter = actorsAdapter
             }
-            castRecycler.adapter = castAdapter
         }
     }
 
     override fun onStart() {
         super.onStart()
-        updateCastData()
+        updateActorsData()
     }
 
-    private fun updateCastData() {
-        castAdapter.bindCastCards(movieCard.cast)
+    private fun updateActorsData() {
+        actorsAdapter.bindActorsCards(movie.actors)
     }
 
     override fun onDestroyView() {
@@ -62,10 +62,10 @@ class DetailsFragment : Fragment() {
     companion object {
         const val MOVIE_ARGS_KEY = "movie"
 
-        fun newInstance(movieCard: MovieCard): DetailsFragment {
+        fun newInstance(movie: Movie): DetailsFragment {
             val detailsFragment = DetailsFragment()
             val args = Bundle()
-            args.putParcelable(MOVIE_ARGS_KEY, movieCard)
+            args.putParcelable(MOVIE_ARGS_KEY, movie)
             detailsFragment.arguments = args
             return detailsFragment
         }

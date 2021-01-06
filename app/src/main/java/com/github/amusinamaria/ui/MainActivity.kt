@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import com.github.amusinamaria.R
 import com.github.amusinamaria.databinding.ActivityMainBinding
-import com.github.amusinamaria.repository.MovieCard
+import com.github.amusinamaria.repository.data.Movie
 import com.github.amusinamaria.ui.details.DetailsFragment
 import com.github.amusinamaria.ui.list.MoviesListFragment
 
@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    fun showMovieDetails(movieCard: MovieCard) {
+    fun showMovieDetails(movie: Movie) {
         supportFragmentManager.beginTransaction()
-            .setTransition(TRANSIT_FRAGMENT_FADE)
             .apply {
-                add(R.id.fragments_container, DetailsFragment.newInstance(movieCard))
+                setTransition(TRANSIT_FRAGMENT_FADE)
+                add(R.id.fragments_container, DetailsFragment.newInstance(movie))
                 addToBackStack(null)
                 commit()
             }
