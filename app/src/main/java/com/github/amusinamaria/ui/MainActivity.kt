@@ -8,7 +8,9 @@ import com.github.amusinamaria.databinding.ActivityMainBinding
 import com.github.amusinamaria.repository.data.Movie
 import com.github.amusinamaria.ui.details.DetailsFragment
 import com.github.amusinamaria.ui.list.MoviesListFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
