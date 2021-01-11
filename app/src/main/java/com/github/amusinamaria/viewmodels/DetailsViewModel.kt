@@ -11,7 +11,7 @@ class DetailsViewModel constructor(val currentMovie: Movie) :
     ViewModel() {
 
     private var _mutableMovieDetails = MutableLiveData<Movie>()
-    val movieDetails: LiveData<Movie> get() = _mutableMovieDetails
+    val movieDetails: LiveData<Movie> = _mutableMovieDetails
 
     init {
         fetchNewMovieDetails()

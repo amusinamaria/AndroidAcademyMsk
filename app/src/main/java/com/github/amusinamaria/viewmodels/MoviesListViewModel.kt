@@ -13,7 +13,7 @@ class MoviesListViewModel @ViewModelInject constructor(private val repository: R
     ViewModel() {
 
     private var _mutableMovies = MutableLiveData<List<Movie>>(emptyList())
-    val movies: LiveData<List<Movie>> get() = _mutableMovies
+    val movies: LiveData<List<Movie>> = _mutableMovies
 
     init {
         fetchNewMovies()
