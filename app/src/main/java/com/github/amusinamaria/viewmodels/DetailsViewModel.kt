@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.amusinamaria.repository.data.Movie
 import kotlinx.coroutines.launch
 
-class DetailsViewModel constructor(val currentMovie: Movie) :
+class DetailsViewModel constructor(private val currentMovie: Movie) :
     ViewModel() {
 
     private var _mutableMovieDetails = MutableLiveData<Movie>()
