@@ -5,22 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.amusinamaria.R
 import com.github.amusinamaria.databinding.FragmentMoviesListBinding
-import com.github.amusinamaria.repository.data.loadMovies
+import com.github.amusinamaria.repository.data.Movie
 import com.github.amusinamaria.ui.MainActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import com.github.amusinamaria.viewmodels.MoviesListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class MoviesListFragment : Fragment() {
+@AndroidEntryPoint
+class MoviesListFragment : Fragment(), Observer<List<Movie>> {
 
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
     private lateinit var moviesAdapter: MoviesAdapter
-    private val scope = CoroutineScope(Dispatchers.Main)
+    private lateinit var viewModel: MoviesListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +34,8 @@ class MoviesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MoviesListViewModel::class.java)
+        viewModel.movies.observe(this.viewLifecycleOwner, this::onChanged)
         val columnsCount: Int = resources.getInteger(R.integer.movie_cards_column_count)
         binding.moviesRecycler.apply {
             layoutManager = GridLayoutManager(context, columnsCount)
@@ -42,22 +45,12 @@ class MoviesListFragment : Fragment() {
         binding.moviesRecycler.adapter = moviesAdapter
     }
 
-    override fun onStart() {
-        super.onStart()
-        updateData()
-    }
-
-    private fun updateData() {
-        scope.launch {
-            moviesAdapter.apply {
-                bindMovieCards(loadMovies(requireContext()))
-            }
-        }
+    override fun onChanged(newMovies: List<Movie>) {
+        moviesAdapter.bindMovieCards(newMovies)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        scope.cancel()
     }
 }
