@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Like" parent="">
         <item name="android:button">@drawable/like_selector</item>
@@ -17,5 +17,18 @@
         <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">@dimen/textsize_8</item>
+    </style>
+
+    <style name="DetailsToolbarCollapsed">DetailsToolbarCollapsed>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white_gray</item>
+        <item name="android:lines">1</item>
+        <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
+    </style>
+
+    <style name="DetailsToolbarExpanded">DetailsToolbarExpanded>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white_gray</item>
+        <item name="android:textSize" tools:ignore="SpUsage">40dp</item>
     </style>
 </resources>

@@ -33,11 +33,11 @@ class DetailsFragment : Fragment() {
             setHasStableIds(true)
         }
         binding.apply {
-            detailsTitle.text = movie.title
-            backArrow.setOnClickListener {
-                fragmentManager?.popBackStack()
-            }
-            actorsRecycler.apply {
+            detailsToolbar.title = movie.title
+//            backArrow.setOnClickListener {
+//                fragmentManager?.popBackStack()
+//            }
+            detailsActorsRecycler.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                 setHasFixedSize(true)
                 adapter = actorsAdapter

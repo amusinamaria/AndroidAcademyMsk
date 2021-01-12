@@ -3,4 +3,6 @@
     <string name="back">Back</string>
     <string name="movies_list">Movies list</string>
     <string name="movie_cover_picture_description">Movie cover picture</string>
+    <string name="cast">Cast</string>
+    <string name="storyline">Storyline</string>
 </resources>
