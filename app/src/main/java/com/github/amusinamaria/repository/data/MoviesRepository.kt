@@ -8,7 +8,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
-class Repository @Inject constructor() {
+class MoviesRepository @Inject constructor() {
 
     private val jsonFormat = Json { ignoreUnknownKeys = true }
 
