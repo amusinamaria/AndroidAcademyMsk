@@ -6,4 +6,6 @@
     <string name="cast">Cast</string>
     <string name="storyline">Storyline</string>
     <string name="pg" formatted="false">%d+</string>
+    <string name="min" formatted="false">%d min</string>
+    <string name="reviews">%d reviews</string>
 </resources>

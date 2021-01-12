@@ -86,10 +86,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_8"
-            android:text="137 min"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="137 min" />
 
         <TextView
             android:id="@+id/movieTags"
@@ -115,10 +115,10 @@
             android:gravity="center_vertical"
             android:progressBackgroundTint="@color/dark_gray"
             android:progressTint="@color/pink"
-            android:rating="4"
             android:stepSize="1"
             app:layout_constraintBottom_toBottomOf="@id/moviePicture"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:rating="4" />
 
         <TextView
             android:id="@+id/movieReviews"
@@ -127,10 +127,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_card_reviews_margin_start"
             android:gravity="center_vertical"
-            android:text="38 reviews"
             app:layout_constraintBottom_toBottomOf="@+id/movieRatingBar"
             app:layout_constraintStart_toEndOf="@+id/movieRatingBar"
-            app:layout_constraintTop_toTopOf="@+id/movieRatingBar" />
+            app:layout_constraintTop_toTopOf="@+id/movieRatingBar"
+            tools:text="38 reviews" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
