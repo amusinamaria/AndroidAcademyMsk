@@ -116,13 +116,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_8"
-                android:text="125 reviews"
                 android:textAllCaps="true"
                 android:textColor="@color/dark_gray"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/detailsRatingBar"
                 app:layout_constraintStart_toEndOf="@+id/detailsRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/detailsRatingBar" />
+                app:layout_constraintTop_toTopOf="@+id/detailsRatingBar"
+                tools:text="125 reviews" />
 
             <TextView
                 android:id="@+id/detailsStorylineTitle"
@@ -147,9 +147,6 @@
                 android:alpha="0.6"
                 android:gravity="center_vertical"
                 android:lineSpacingExtra="4dp"
-                android:text="After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.
-After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.
-After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
                 android:textColor="@color/white_gray"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/textsize_14"
@@ -169,9 +166,11 @@ After the devastating events of Avengers: Infinity War, the universe is in ruins
                 android:text="@string/cast"
                 android:textColor="@color/white_gray"
                 android:textStyle="bold"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsStoryline" />
+                app:layout_constraintTop_toBottomOf="@+id/detailsStoryline"
+                tools:visibility="visible" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detailsActorsRecycler"

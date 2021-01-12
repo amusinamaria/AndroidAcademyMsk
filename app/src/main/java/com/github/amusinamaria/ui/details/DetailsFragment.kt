@@ -4,11 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.github.amusinamaria.R
 import com.github.amusinamaria.databinding.FragmentDetailsBinding
 import com.github.amusinamaria.repository.data.Movie
 import com.github.amusinamaria.viewmodels.DetailsVMFactory
@@ -53,8 +57,23 @@ class DetailsFragment : Fragment(), Observer<Movie> {
     }
 
     override fun onChanged(movieDetails: Movie) {
-        actorsAdapter.bindActorsCards(movieDetails.actors)
-        binding.detailsToolbar.title = movieDetails.title
+        if (movieDetails.actors.isNotEmpty()) {
+            binding.detailsCastTitle.isVisible = true
+            actorsAdapter.bindActorsCards(movieDetails.actors)
+        }
+        binding.apply {
+            detailsToolbar.title = movieDetails.title
+            detailsStoryline.text = movieDetails.overview
+            detailsPG.text = getString(R.string.pg, movieDetails.minimumAge)
+            detailsRatingBar.rating = movieDetails.ratings / 2
+            detailsReviews.text = getString(R.string.reviews, movieDetails.numberOfRatings)
+        }
+        Glide.with(requireContext())
+            .load(movieDetails.backdrop)
+            .transition(DrawableTransitionOptions.withCrossFade(60))
+            .placeholder(R.color.dark_blue_background)
+            .fallback(R.color.dark_blue_background)
+            .into(binding.detailsCover)
     }
 
     override fun onDestroyView() {
