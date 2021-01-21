@@ -69,6 +69,8 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.1.0'
     //LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    //LeakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 }
 
 kapt {
