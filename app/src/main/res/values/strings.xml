@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">Maria Amusina</string>
-    <string name="back">Back</string>
     <string name="movies_list">Movies list</string>
     <string name="movie_cover_picture_description">Movie cover picture</string>
     <string name="cast">Cast</string>
     <string name="storyline">Storyline</string>
-    <string name="pg" formatted="false">%d+</string>
-    <string name="min" formatted="false">%d min</string>
+    <string name="pg" formatted="true">%d+</string>
+    <string name="min" formatted="true">%d min</string>
 </resources>

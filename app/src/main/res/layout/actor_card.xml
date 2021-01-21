@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/cast_photo_size"
         android:scaleType="centerCrop"
+        tools:ignore="ContentDescription"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -23,5 +24,6 @@
         android:textColor="@color/white_gray"
         android:textSize="@dimen/textsize_12"
         android:textStyle="bold"
+        tools:ignore="SpUsage"
         tools:text="@tools:sample/full_names" />
 </LinearLayout>
