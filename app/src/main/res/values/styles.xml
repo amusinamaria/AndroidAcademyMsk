@@ -19,6 +19,12 @@
         <item name="android:textSize">@dimen/textsize_8</item>
     </style>
 
+    <style name="RatingBar">
+        <item name="android:progressTint">@color/pink</item>
+        <item name="android:stepSize">1</item>
+        <item name="android:progressBackgroundTint">@color/dark_gray</item>
+    </style>
+
     <style name="DetailsToolbarCollapsed">DetailsToolbarCollapsed>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white_gray</item>
@@ -30,5 +36,34 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white_gray</item>
         <item name="android:textSize" tools:ignore="SpUsage">40dp</item>
+    </style>
+
+    <style name="DetailsReviewsAndPG">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="DetailsStorylineText">
+        <item name="android:textColor">@color/white_gray</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="DetailsStorylineAndCastTitle">
+        <item name="android:textColor">@color/white_gray</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailsTags">
+        <item name="android:textColor">@color/pink</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="DetailsActorsRV">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:overScrollMode">never</item>
     </style>
 </resources>

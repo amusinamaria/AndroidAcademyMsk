@@ -111,14 +111,12 @@
         <me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:id="@+id/movieRatingBar"
             style="?android:attr/ratingBarStyleSmall"
+            android:theme="@style/RatingBar"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/movie_card_ratingbar_height"
             android:layout_marginStart="@dimen/space_8"
             android:layout_marginBottom="@dimen/space_8"
             android:gravity="center_vertical"
-            android:progressBackgroundTint="@color/dark_gray"
-            android:progressTint="@color/pink"
-            android:stepSize="1"
             app:layout_constraintBottom_toBottomOf="@id/moviePicture"
             app:layout_constraintStart_toStartOf="parent"
             tools:rating="4" />

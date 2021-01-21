@@ -70,14 +70,11 @@
 
             <TextView
                 android:id="@+id/detailsTags"
+                style="@style/DetailsTags"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_16"
                 android:layout_marginTop="@dimen/space_16"
-                android:alpha="0.8"
-                android:gravity="center_vertical"
-                android:textColor="@color/pink"
-                android:textIsSelectable="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Adventure, Sci-Fi, Hardcore" />
@@ -89,23 +86,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_16"
                 android:layout_marginTop="@dimen/space_8"
-                android:progressBackgroundTint="@color/dark_gray"
-                android:progressTint="@color/pink"
-                android:stepSize="1"
+                android:theme="@style/RatingBar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailsTags"
                 tools:rating="4" />
 
             <TextView
                 android:id="@+id/detailsPG"
+                style="@style/DetailsReviewsAndPG"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/movie_card_pg_size"
                 android:layout_marginStart="@dimen/space_16"
                 android:layout_marginTop="@dimen/space_8"
-                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/dark_gray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailsRatingBar"
                 tools:ignore="SpUsage"
@@ -113,12 +106,10 @@
 
             <TextView
                 android:id="@+id/detailsReviews"
+                style="@style/DetailsReviewsAndPG"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_8"
-                android:textAllCaps="true"
-                android:textColor="@color/dark_gray"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/detailsRatingBar"
                 app:layout_constraintStart_toEndOf="@+id/detailsRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/detailsRatingBar"
@@ -126,29 +117,24 @@
 
             <TextView
                 android:id="@+id/detailsStorylineTitle"
+                style="@style/DetailsStorylineAndCastTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/space_16"
                 android:layout_marginTop="@dimen/space_24"
                 android:text="@string/storyline"
-                android:textColor="@color/white_gray"
-                android:textIsSelectable="true"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailsPG" />
 
             <TextView
                 android:id="@+id/detailsStoryline"
+                style="@style/DetailsStorylineText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/space_16"
                 android:layout_marginTop="@dimen/space_16"
-                android:alpha="0.6"
                 android:gravity="center_vertical"
-                android:lineSpacingExtra="4dp"
-                android:textColor="@color/white_gray"
-                android:textIsSelectable="true"
                 android:textSize="@dimen/textsize_14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -158,14 +144,13 @@
 
             <TextView
                 android:id="@+id/detailsCastTitle"
+                style="@style/DetailsStorylineAndCastTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_16"
                 android:layout_marginTop="@dimen/space_36"
                 android:layout_marginEnd="@dimen/space_16"
                 android:text="@string/cast"
-                android:textColor="@color/white_gray"
-                android:textStyle="bold"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -174,13 +159,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detailsActorsRecycler"
+                style="@style/DetailsActorsRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_16"
                 android:layout_marginBottom="@dimen/space_24"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:overScrollMode="never"
                 android:paddingHorizontal="@dimen/cast_rv_padding"
                 app:layoutManager="LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
