@@ -67,6 +67,7 @@ class DetailsFragment : Fragment(), Observer<Movie> {
             detailsPG.text = getString(R.string.pg, movieDetails.minimumAge)
             detailsRatingBar.rating = movieDetails.ratings / 2
             detailsReviews.text = getString(R.string.reviews, movieDetails.numberOfRatings)
+            detailsTags.text = movieDetails.genres.joinToString { it.name }
         }
         Glide.with(requireContext())
             .load(movieDetails.backdrop)

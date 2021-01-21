@@ -59,6 +59,7 @@ class MoviesAdapter(private val clickListener: (Movie) -> Unit) :
                 movieDuration.text = itemView.context.getString(R.string.min, movie.runtime)
                 movieReviews.text =
                     itemView.context.getString(R.string.reviews, movie.numberOfRatings)
+                movieTags.text = movie.genres.joinToString { it.name }
             }
         }
     }
