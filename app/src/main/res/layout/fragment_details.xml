@@ -19,7 +19,8 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleTextAppearance="@style/DetailsToolbarExpanded"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:maxLines="2">
+            app:maxLines="2"
+            app:theme="@style/ToolbarBackArrow">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
