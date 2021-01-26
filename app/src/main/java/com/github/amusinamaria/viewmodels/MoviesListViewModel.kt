@@ -6,10 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.amusinamaria.repository.data.Movie
-import com.github.amusinamaria.repository.data.Repository
+import com.github.amusinamaria.repository.data.MoviesRepository
 import kotlinx.coroutines.launch
 
-class MoviesListViewModel @ViewModelInject constructor(private val repository: Repository) :
+class MoviesListViewModel @ViewModelInject constructor(private val moviesRepository: MoviesRepository) :
     ViewModel() {
 
     private var _mutableMovies = MutableLiveData<List<Movie>>(emptyList())
@@ -21,7 +21,7 @@ class MoviesListViewModel @ViewModelInject constructor(private val repository: R
 
     private fun fetchNewMovies() {
         viewModelScope.launch {
-            val newMovies = repository.loadMovies()
+            val newMovies = moviesRepository.loadMovies()
             _mutableMovies.postValue(newMovies)
         }
     }

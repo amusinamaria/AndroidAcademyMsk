@@ -52,8 +52,18 @@ class MoviesAdapter(private val clickListener: (Movie) -> Unit) :
                 .fallback(R.drawable.ic_movie_placeholder)
                 .into(binding.moviePicture)
 
-            binding.movieTitle.text = movie.title
-            binding.pg.text = movie.minimumAge.toString()
+            binding.apply {
+                movieTitle.text = movie.title
+                pg.text = itemView.context.getString(R.string.pg, movie.minimumAge)
+                movieRatingBar.rating = movie.ratings / 2
+                movieDuration.text = itemView.context.getString(R.string.min, movie.runtime)
+                movieReviews.text = itemView.context.resources.getQuantityString(
+                    R.plurals.reviews,
+                    movie.numberOfRatings,
+                    movie.numberOfRatings
+                )
+                movieTags.text = movie.genres.joinToString { it.name }
+            }
         }
     }
 }
