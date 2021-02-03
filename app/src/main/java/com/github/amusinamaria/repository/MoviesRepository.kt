@@ -1,5 +1,9 @@
-package com.github.amusinamaria.repository.data
+package com.github.amusinamaria.repository
 
+import com.github.amusinamaria.repository.data.Actor
+import com.github.amusinamaria.repository.data.Genre
+import com.github.amusinamaria.repository.data.JsonMovie
+import com.github.amusinamaria.repository.data.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

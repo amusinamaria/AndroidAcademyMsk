@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.amusinamaria.repository.MoviesRepository
 import com.github.amusinamaria.repository.data.Movie
-import com.github.amusinamaria.repository.data.MoviesRepository
 import kotlinx.coroutines.launch
 
 class MoviesListViewModel @ViewModelInject constructor(private val moviesRepository: MoviesRepository) :
