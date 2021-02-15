@@ -13,10 +13,10 @@ class ApiKeyInterceptor : Interceptor {
             .addQueryParameter(API_KEY_KEY, API_KEY_VALUE)
             .build()
 
-        val request = originalRequest.newBuilder()
+        val newRequest = originalRequest.newBuilder()
             .url(newUrl)
             .build()
-        return chain.proceed(request)
+        return chain.proceed(newRequest)
     }
 
     private companion object {
