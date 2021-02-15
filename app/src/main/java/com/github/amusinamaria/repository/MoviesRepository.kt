@@ -1,6 +1,5 @@
 package com.github.amusinamaria.repository
 
-import android.util.Log
 import com.github.amusinamaria.R
 import com.github.amusinamaria.network.MovieFromNetwork
 import com.github.amusinamaria.network.NetworkModule
@@ -12,25 +11,20 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
 import retrofit2.HttpException
+import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
 class MoviesRepository @Inject constructor() {
 
-//    private val jsonFormat = Json { ignoreUnknownKeys = true }
-
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e(
-            "MoviesRepository",
-            "Coroutine exception",
-            throwable
-        )
+        Timber.e(throwable)
         val errorTextId = when (throwable) {
             is IOException, is HttpException -> R.string.internet_connection_error
             is SerializationException -> R.string.parsing_error
             else -> R.string.unexpected_error
         }
-        Log.e("MoviesRepository", errorTextId.toString())
+        Timber.e(errorTextId.toString())
     }
 
     @ExperimentalSerializationApi
