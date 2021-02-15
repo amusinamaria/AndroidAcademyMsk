@@ -8,7 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.github.amusinamaria.repository.MoviesRepository
 import com.github.amusinamaria.repository.data.Movie
 import kotlinx.coroutines.launch
+import kotlinx.serialization.ExperimentalSerializationApi
 
+@ExperimentalSerializationApi
 class MoviesListViewModel @ViewModelInject constructor(private val moviesRepository: MoviesRepository) :
     ViewModel() {
 
@@ -21,7 +23,7 @@ class MoviesListViewModel @ViewModelInject constructor(private val moviesReposit
 
     private fun fetchNewMovies() {
         viewModelScope.launch {
-            val newMovies = moviesRepository.loadMovies()
+            val newMovies = moviesRepository.loadMoviesFromNetwork()
             _mutableMovies.postValue(newMovies)
         }
     }

@@ -1,88 +1,70 @@
 package com.github.amusinamaria.repository
 
-import com.github.amusinamaria.repository.data.Actor
+import android.util.Log
+import com.github.amusinamaria.R
+import com.github.amusinamaria.network.MovieFromNetwork
+import com.github.amusinamaria.network.NetworkModule
 import com.github.amusinamaria.repository.data.Genre
-import com.github.amusinamaria.repository.data.JsonMovie
 import com.github.amusinamaria.repository.data.Movie
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.SerializationException
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 
 class MoviesRepository @Inject constructor() {
 
-    private val jsonFormat = Json { ignoreUnknownKeys = true }
+//    private val jsonFormat = Json { ignoreUnknownKeys = true }
 
-    private suspend fun loadGenres(): List<Genre> = withContext(Dispatchers.IO) {
-        val data = readAssetFileToString("genres.json")
-        parseGenres(data)
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Log.e(
+            "MoviesRepository",
+            "Coroutine exception",
+            throwable
+        )
+        val errorTextId = when (throwable) {
+            is IOException, is HttpException -> R.string.internet_connection_error
+            is SerializationException -> R.string.parsing_error
+            else -> R.string.unexpected_error
+        }
+        Log.e("MoviesRepository", errorTextId.toString())
     }
 
-    private fun parseGenres(data: String): List<Genre> {
-        return jsonFormat.decodeFromString(data)
-    }
-
-    private fun readAssetFileToString(fileName: String): String {
-        val stream = javaClass.getResourceAsStream("/assets/$fileName")
-        return stream!!.bufferedReader().readText()
-    }
-
-    private suspend fun loadActors(): List<Actor> = withContext(Dispatchers.IO) {
-        val data = readAssetFileToString("people.json")
-        parseActors(data)
-    }
-
-    private fun parseActors(data: String): List<Actor> {
-        return jsonFormat.decodeFromString(data)
-    }
-
-    internal suspend fun loadMovies(): List<Movie> = withContext(Dispatchers.IO) {
-        var genresMap = listOf<Genre>()
-        var actorsMap = listOf<Actor>()
-        var data = ""
+    @ExperimentalSerializationApi
+    suspend fun loadMoviesFromNetwork(): List<Movie> {
+        var moviesFromNetwork = listOf<MovieFromNetwork>()
+        var genres = listOf<Genre>()
         coroutineScope {
-            launch {
-                genresMap = loadGenres()
+            launch(exceptionHandler) {
+                moviesFromNetwork = NetworkModule.moviesApi.getNowPlayingMovies().results
             }
-            launch {
-                actorsMap = loadActors()
-            }
-            launch {
-                data = readAssetFileToString("data.json")
+            launch(exceptionHandler) {
+                genres = NetworkModule.moviesApi.getGenres().genres
             }
         }
-        parseMovies(data, genresMap, actorsMap)
+        return createMoviesObjects(moviesFromNetwork, genres)
     }
 
-    private fun parseMovies(
-        data: String,
+    private fun createMoviesObjects(
+        moviesFromNetwork: List<MovieFromNetwork>,
         genres: List<Genre>,
-        actors: List<Actor>
     ): List<Movie> {
-        val genresMap = genres.associateBy { it.id }
-        val actorsMap = actors.associateBy { it.id }
-
-        val jsonMovies = jsonFormat.decodeFromString<List<JsonMovie>>(data)
-
-        return jsonMovies.map { jsonMovie ->
+        val genresMap = genres.associateBy { genre -> genre.id }
+        return moviesFromNetwork.map { movieFromNetwork ->
             Movie(
-                id = jsonMovie.id,
-                title = jsonMovie.title,
-                overview = jsonMovie.overview,
-                poster = jsonMovie.posterPicture,
-                backdrop = jsonMovie.backdropPicture,
-                ratings = jsonMovie.ratings,
-                numberOfRatings = jsonMovie.votesCount,
-                minimumAge = if (jsonMovie.adult) 16 else 13,
-                runtime = jsonMovie.runtime,
-                genres = jsonMovie.genreIds.map {
-                    genresMap[it] ?: throw IllegalArgumentException("Genre not found")
-                },
-                actors = jsonMovie.actors.map {
-                    actorsMap[it] ?: throw IllegalArgumentException("Actor not found")
+                id = movieFromNetwork.id,
+                title = movieFromNetwork.title,
+                poster = movieFromNetwork.poster.orEmpty(),
+                backdrop = movieFromNetwork.backdrop.orEmpty(),
+                rating = movieFromNetwork.rating,
+                minimumAge = if (movieFromNetwork.adult) 16 else 13,
+                numberOfReviews = movieFromNetwork.numberOfReviews,
+                overview = movieFromNetwork.overview,
+                genres = movieFromNetwork.genreIds.map { id ->
+                    genresMap[id] ?: throw IllegalArgumentException("Genre not found")
                 }
             )
         }

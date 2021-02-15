@@ -56,12 +56,11 @@ class MoviesAdapter(private val clickListener: (Movie) -> Unit) :
             binding.apply {
                 movieTitle.text = movie.title
                 pg.text = itemView.context.getString(R.string.pg, movie.minimumAge)
-                movieRatingBar.rating = movie.ratings / 2
-                movieDuration.text = itemView.context.getString(R.string.min, movie.runtime)
+                movieRatingBar.rating = movie.rating / 2
                 movieReviews.text = itemView.context.resources.getQuantityString(
                     R.plurals.reviews,
-                    movie.numberOfRatings,
-                    movie.numberOfRatings
+                    movie.numberOfReviews,
+                    movie.numberOfReviews
                 )
                 movieTags.text = movie.genres.joinToString { it.name }
             }

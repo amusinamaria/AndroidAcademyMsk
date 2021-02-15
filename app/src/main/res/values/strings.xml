@@ -6,4 +6,8 @@
     <string name="storyline">Storyline</string>
     <string name="pg" formatted="true">%d+</string>
     <string name="min" formatted="true">%d min</string>
+
+    <string name="internet_connection_error">Internet connection error. Try next time.</string>
+    <string name="parsing_error">Json parsing error. Please check logs.</string>
+    <string name="unexpected_error">Unexpected error happened. Please check logs.</string>
 </resources>

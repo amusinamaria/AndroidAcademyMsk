@@ -14,7 +14,9 @@ import com.github.amusinamaria.repository.data.Movie
 import com.github.amusinamaria.ui.MainActivity
 import com.github.amusinamaria.viewmodels.MoviesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.serialization.ExperimentalSerializationApi
 
+@ExperimentalSerializationApi
 @AndroidEntryPoint
 class MoviesListFragment : Fragment(), Observer<List<Movie>> {
 
