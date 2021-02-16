@@ -2,7 +2,7 @@ package com.github.amusinamaria.repository
 
 import com.github.amusinamaria.R
 import com.github.amusinamaria.network.MovieFromNetwork
-import com.github.amusinamaria.network.NetworkModule
+import com.github.amusinamaria.network.MoviesApi
 import com.github.amusinamaria.repository.data.Genre
 import com.github.amusinamaria.repository.data.Movie
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,7 +15,7 @@ import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
-class MoviesRepository @Inject constructor() {
+class MoviesRepository @Inject constructor(private val moviesApi: MoviesApi) {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable)
@@ -33,10 +33,10 @@ class MoviesRepository @Inject constructor() {
         var genres = listOf<Genre>()
         coroutineScope {
             launch(exceptionHandler) {
-                moviesFromNetwork = NetworkModule.moviesApi.getNowPlayingMovies().results
+                moviesFromNetwork = moviesApi.getNowPlayingMovies().results
             }
             launch(exceptionHandler) {
-                genres = NetworkModule.moviesApi.getGenres().genres
+                genres = moviesApi.getGenres().genres
             }
         }
         return createMoviesObjects(moviesFromNetwork, genres)
