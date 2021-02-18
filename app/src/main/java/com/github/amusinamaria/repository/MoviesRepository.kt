@@ -3,6 +3,7 @@ package com.github.amusinamaria.repository
 import com.github.amusinamaria.R
 import com.github.amusinamaria.network.MovieFromNetwork
 import com.github.amusinamaria.network.MoviesApi
+import com.github.amusinamaria.repository.data.Actor
 import com.github.amusinamaria.repository.data.Genre
 import com.github.amusinamaria.repository.data.Movie
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -59,8 +60,20 @@ class MoviesRepository @Inject constructor(private val moviesApi: MoviesApi) {
                 overview = movieFromNetwork.overview,
                 genres = movieFromNetwork.genreIds.map { id ->
                     genresMap[id] ?: throw IllegalArgumentException("Genre not found")
-                }
+                },
+                actors = listOf()
             )
         }
+    }
+
+    @ExperimentalSerializationApi
+    suspend fun loadActorsFromNetwork(movieId: Long): List<Actor> {
+        var actors = listOf<Actor>()
+        coroutineScope {
+            launch(exceptionHandler) {
+                actors = moviesApi.getActors(movieId).actors
+            }
+        }
+        return actors
     }
 }

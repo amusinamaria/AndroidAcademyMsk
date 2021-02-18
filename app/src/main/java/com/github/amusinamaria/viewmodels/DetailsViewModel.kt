@@ -19,8 +19,9 @@ class DetailsViewModel constructor(private val currentMovie: Movie) :
 
     private fun fetchNewMovieDetails() {
         viewModelScope.launch {
-            val newMovieDetails = currentMovie
-            _mutableMovieDetails.postValue(newMovieDetails)
+//            val newMovieDetails = currentMovie
+//            val actors = moviesRepository.loadActorsFromNetwork(currentMovie.id)
+//            _mutableMovieWithDetails.postValue(newMovieDetails)
         }
     }
 }
